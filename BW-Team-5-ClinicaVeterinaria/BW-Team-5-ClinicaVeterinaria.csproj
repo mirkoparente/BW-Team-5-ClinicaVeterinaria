@@ -166,6 +166,7 @@
     <Compile Include="Controllers\ClientiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
+    <Compile Include="Controllers\UtentiController.cs" />
     <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +187,7 @@
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Classi\Auth.cs" />
     <Compile Include="Models\Clienti.cs" />
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
@@ -218,6 +220,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\login.css" />
+    <Content Include="Content\Css\_layoutpage.css" />
+    <Content Include="Content\Img\pexels-sam-lion-5733422.jpg" />
+    <Content Include="Content\Img\pexels-sam-lion-5733423.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -279,11 +285,6 @@
     <Content Include="Views\Clientis\Details.cshtml" />
     <Content Include="Views\Clientis\Edit.cshtml" />
     <Content Include="Views\Clientis\Index.cshtml" />
-    <Content Include="Views\Visite\Create.cshtml" />
-    <Content Include="Views\Visite\Delete.cshtml" />
-    <Content Include="Views\Visite\Details.cshtml" />
-    <Content Include="Views\Visite\Edit.cshtml" />
-    <Content Include="Views\Visite\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

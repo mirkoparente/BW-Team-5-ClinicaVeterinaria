@@ -17,6 +17,10 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
           rel="stylesheet" />
+    <!-- personal style -->
+    <link href="~/Content/Css/_layoutpage.css" rel="stylesheet" />
+    <link href="~/Content/Css/login.css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -75,14 +79,15 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
+    <div class="wrapper">
+        <div class="container body-content">
+            @RenderBody()
+        </div>
     </div>
-
+    <hr />
+    <footer class="footer mt-auto">
+        <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
