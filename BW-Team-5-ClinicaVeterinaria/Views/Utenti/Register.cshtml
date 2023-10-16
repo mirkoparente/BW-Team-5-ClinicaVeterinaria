@@ -1,0 +1,27 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Utente
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.Partial("_FormUtente")
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

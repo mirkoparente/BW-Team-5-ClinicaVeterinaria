@@ -181,6 +181,7 @@
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Classi\Auth.cs" />
     <Compile Include="Models\Clienti.cs" />
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
@@ -213,6 +214,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\login.css" />
+    <Content Include="Content\Css\_layoutpage.css" />
+    <Content Include="Content\Img\pexels-sam-lion-5733422.jpg" />
+    <Content Include="Content\Img\pexels-sam-lion-5733423.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -267,6 +272,8 @@
     <Content Include="Views\Pazienti\Edit.cshtml" />
     <Content Include="Views\Pazienti\Index.cshtml" />
     <Content Include="Views\Utenti\Login.cshtml" />
+    <Content Include="Views\Utenti\Register.cshtml" />
+    <Content Include="Views\Utenti\_FormUtente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
