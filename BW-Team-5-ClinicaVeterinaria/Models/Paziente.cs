@@ -23,10 +23,12 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public string Nome { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name ="Data di Nascita")]
         public DateTime? DataNascita { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name ="Colore")]
         public string ColoreMantello { get; set; }
 
         [StringLength(10)]
@@ -36,10 +38,13 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
 
         [Required]
+        [Display(Name ="Ricoverato")]
         public bool IsHospitalized { get; set; }
 
         public int? IdClienti { get; set; }
 
+
+        [Display(Name ="Tipologia Paziente")]
         public int IdTipo { get; set; }
 
         public virtual Clienti Clienti { get; set; }
