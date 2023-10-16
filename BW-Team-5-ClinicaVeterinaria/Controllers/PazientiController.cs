@@ -40,6 +40,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // GET: Pazienti/Create
         public ActionResult AddPaziente()
         {
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia");
             return View();
         }
@@ -51,28 +52,27 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
         {
-            string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
 
-            if (User.Identity.IsAuthenticated)
-            {
-               string user=User.Identity.Name;
-                Utente ut=db.Utente.FirstOrDefault(u=>u.Email==user);
-                int IdUtente = ut.IdUtente;
-
+           
             if (ModelState.IsValid)
             {
                 if (Foto != null)
                 {
+                    string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
                     Foto.SaveAs(source);
                     paziente.Foto = Foto.FileName;
-                }
-                paziente.IdPaziente = IdUtente;
+                    }
+                    else
+                    {
+                        paziente.Foto = "";
+                    }
                 db.Paziente.Add(paziente);
                 db.SaveChanges();
                 return RedirectToAction("ListaPazienti");
-            }
+            
 
         }
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
             }
@@ -90,6 +90,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }
@@ -101,27 +102,24 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
         {
-            string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
-
-            if (User.Identity.IsAuthenticated)
-            {
-                string user = User.Identity.Name;
-                Utente ut = db.Utente.FirstOrDefault(u => u.Email == user);
-                int IdUtente = ut.IdUtente;
-
 
                 if (ModelState.IsValid)
                 {
                     if (Foto != null)
                     {
+            string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
                         Foto.SaveAs(source);
                         paziente.Foto = Foto.FileName;
-                    }
+                }
+                else
+                {
+                    paziente.Foto = "";
+                }
                     db.Entry(paziente).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ListaPazienti");
                 }
-            }
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }

@@ -65,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.IsHospitalized)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdPaziente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdPaziente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdPaziente })
+            @Html.ActionLink("Modifica","EditPaziente", new { id=item.IdPaziente }) |
+            @Html.ActionLink("Dettaglio Paziente", "DettagliPaziente", new { id=item.IdPaziente }) |
+            @Html.ActionLink("Elimina", "Delete", new { id=item.IdPaziente })
         </td>
     </tr>
 }
