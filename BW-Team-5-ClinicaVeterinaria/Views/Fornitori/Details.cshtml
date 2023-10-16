@@ -1,0 +1,58 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Fornitori
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fornitori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RagioneSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RagioneSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indirizzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Piva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Piva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Citta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recapito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recapito)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFornitori }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

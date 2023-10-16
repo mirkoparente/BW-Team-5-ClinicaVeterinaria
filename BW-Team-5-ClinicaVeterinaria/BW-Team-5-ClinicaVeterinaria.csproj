@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FornitoriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,6 +266,11 @@
     <Content Include="Views\Pazienti\Details.cshtml" />
     <Content Include="Views\Pazienti\Edit.cshtml" />
     <Content Include="Views\Pazienti\Index.cshtml" />
+    <Content Include="Views\Fornitori\Create.cshtml" />
+    <Content Include="Views\Fornitori\Delete.cshtml" />
+    <Content Include="Views\Fornitori\Details.cshtml" />
+    <Content Include="Views\Fornitori\Edit.cshtml" />
+    <Content Include="Views\Fornitori\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
