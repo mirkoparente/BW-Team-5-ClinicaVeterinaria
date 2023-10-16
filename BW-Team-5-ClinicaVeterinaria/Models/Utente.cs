@@ -28,6 +28,9 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [StringLength(50)]
         public string Password { get; set; }
 
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
+
         public int IdRuoli { get; set; }
 
         public virtual Ruoli Ruoli { get; set; }

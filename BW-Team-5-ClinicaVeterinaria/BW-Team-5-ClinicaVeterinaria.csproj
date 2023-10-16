@@ -283,10 +283,10 @@
     <Content Include="Views\Utenti\Login.cshtml" />
     <Content Include="Views\Utenti\Register.cshtml" />
     <Content Include="Views\Utenti\_FormUtente.cshtml" />
+    <Content Include="Views\Utenti\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

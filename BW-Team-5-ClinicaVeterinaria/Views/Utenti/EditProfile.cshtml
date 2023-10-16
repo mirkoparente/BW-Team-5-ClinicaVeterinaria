@@ -1,0 +1,27 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Utente
+
+@{
+    ViewBag.Title = "EditProfile";
+}
+
+<h2>EditProfile</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.IdUtente)
+    @Html.HiddenFor(model => model.IdRuoli)
+
+    @Html.Partial("_FormUtente", Model);
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
