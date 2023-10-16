@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.Paziente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListaPazienti";
 }
 
 <h2>Index</h2>
@@ -59,7 +59,7 @@
             @Html.DisplayFor(modelItem => item.Microchip)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Foto)
+            <img src="~/Content/img/@item.Foto" alt="Alternate Text" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsHospitalized)

@@ -260,14 +260,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pazienti\Create.cshtml" />
+    <Content Include="Views\Pazienti\AddPaziente.cshtml" />
     <Content Include="Views\Pazienti\Delete.cshtml" />
-    <Content Include="Views\Pazienti\Details.cshtml" />
-    <Content Include="Views\Pazienti\Edit.cshtml" />
-    <Content Include="Views\Pazienti\Index.cshtml" />
+    <Content Include="Views\Pazienti\DettagliPaziente.cshtml" />
+    <Content Include="Views\Pazienti\EditPaziente.cshtml" />
+    <Content Include="Views\Pazienti\ListaPazienti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />
