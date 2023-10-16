@@ -272,9 +272,6 @@
     <Content Include="Views\Pazienti\DettagliPaziente.cshtml" />
     <Content Include="Views\Pazienti\EditPaziente.cshtml" />
     <Content Include="Views\Pazienti\ListaPazienti.cshtml" />
-    <Content Include="Views\Pazienti\Details.cshtml" />
-    <Content Include="Views\Pazienti\Edit.cshtml" />
-    <Content Include="Views\Pazienti\Index.cshtml" />
     <Content Include="Views\Clientis\Create.cshtml" />
     <Content Include="Views\Clientis\Delete.cshtml" />
     <Content Include="Views\Clientis\Details.cshtml" />
