@@ -171,6 +171,10 @@
     <Compile Include="Migrations\202310160941195_DBinit.designer.cs">
       <DependentUpon>202310160941195_DBinit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310161003304_AddBoolpaziente.cs" />
+    <Compile Include="Migrations\202310161003304_AddBoolpaziente.designer.cs">
+      <DependentUpon>202310161003304_AddBoolpaziente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -234,6 +238,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\ClinicaVeterinaria.bak" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -332,6 +337,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310160941195_DBinit.resx">
       <DependentUpon>202310160941195_DBinit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310161003304_AddBoolpaziente.resx">
+      <DependentUpon>202310161003304_AddBoolpaziente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

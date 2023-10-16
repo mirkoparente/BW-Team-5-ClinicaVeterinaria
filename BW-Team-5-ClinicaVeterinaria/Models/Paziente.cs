@@ -34,6 +34,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         public string Foto { get; set; }
 
+
+        [Required]
+        public bool IsHospitalized { get; set; }
+
         public int? IdClienti { get; set; }
 
         public int IdTipo { get; set; }
