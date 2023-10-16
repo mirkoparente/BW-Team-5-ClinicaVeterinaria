@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ClientisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
     <Compile Include="Controllers\UtentiController.cs" />
@@ -266,17 +267,26 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pazienti\Create.cshtml" />
+    <Content Include="Views\Pazienti\AddPaziente.cshtml" />
     <Content Include="Views\Pazienti\Delete.cshtml" />
+    <Content Include="Views\Pazienti\DettagliPaziente.cshtml" />
+    <Content Include="Views\Pazienti\EditPaziente.cshtml" />
+    <Content Include="Views\Pazienti\ListaPazienti.cshtml" />
     <Content Include="Views\Pazienti\Details.cshtml" />
     <Content Include="Views\Pazienti\Edit.cshtml" />
     <Content Include="Views\Pazienti\Index.cshtml" />
+    <Content Include="Views\Clientis\Create.cshtml" />
+    <Content Include="Views\Clientis\Delete.cshtml" />
+    <Content Include="Views\Clientis\Details.cshtml" />
+    <Content Include="Views\Clientis\Edit.cshtml" />
+    <Content Include="Views\Clientis\Index.cshtml" />
     <Content Include="Views\Utenti\Login.cshtml" />
     <Content Include="Views\Utenti\Register.cshtml" />
     <Content Include="Views\Utenti\_FormUtente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

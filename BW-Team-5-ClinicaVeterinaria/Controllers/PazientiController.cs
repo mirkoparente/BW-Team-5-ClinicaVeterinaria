@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,14 +16,14 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         private ContextDbModel db = new ContextDbModel();
 
         // GET: Pazienti
-        public ActionResult Index()
+        public ActionResult ListaPazienti()
         {
             var paziente = db.Paziente.Include(p => p.Clienti).Include(p => p.TipoPaziente);
             return View(paziente.ToList());
         }
 
         // GET: Pazienti/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult DettagliPaziente(int? id)
         {
             if (id == null)
             {
@@ -37,9 +38,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         }
 
         // GET: Pazienti/Create
-        public ActionResult Create()
+        public ActionResult AddPaziente()
         {
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia");
             return View();
         }
@@ -49,23 +49,38 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente)
+        public ActionResult AddPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
         {
+            string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
+
+            if (User.Identity.IsAuthenticated)
+            {
+               string user=User.Identity.Name;
+                Utente ut=db.Utente.FirstOrDefault(u=>u.Email==user);
+                int IdUtente = ut.IdUtente;
+
             if (ModelState.IsValid)
             {
+                if (Foto != null)
+                {
+                    Foto.SaveAs(source);
+                    paziente.Foto = Foto.FileName;
+                }
+                paziente.IdPaziente = IdUtente;
                 db.Paziente.Add(paziente);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaPazienti");
             }
 
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
+        }
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
-        }
+            }
 
         // GET: Pazienti/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditPaziente(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -75,7 +90,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }
@@ -85,15 +99,29 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente)
+        public ActionResult EditPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
         {
-            if (ModelState.IsValid)
+            string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
+
+            if (User.Identity.IsAuthenticated)
             {
-                db.Entry(paziente).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string user = User.Identity.Name;
+                Utente ut = db.Utente.FirstOrDefault(u => u.Email == user);
+                int IdUtente = ut.IdUtente;
+
+
+                if (ModelState.IsValid)
+                {
+                    if (Foto != null)
+                    {
+                        Foto.SaveAs(source);
+                        paziente.Foto = Foto.FileName;
+                    }
+                    db.Entry(paziente).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ListaPazienti");
+                }
             }
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }
@@ -121,7 +149,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             Paziente paziente = db.Paziente.Find(id);
             db.Paziente.Remove(paziente);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaPazienti");
         }
 
         protected override void Dispose(bool disposing)
