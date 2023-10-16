@@ -1,0 +1,47 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Clienti
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Elimina cliente</h2>
+
+<h3>Sei sicuro di voler eliminare questo cliente?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cognome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Elimina" class="btn btn-default" /> |
+            @Html.ActionLink("Torna alla lista dei clienti", "Index")
+        </div>
+    }
+</div>
