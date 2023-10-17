@@ -277,10 +277,6 @@
     <Content Include="Views\Clientis\Details.cshtml" />
     <Content Include="Views\Clientis\Edit.cshtml" />
     <Content Include="Views\Clientis\Index.cshtml" />
-    <Content Include="Views\Utenti\Login.cshtml" />
-    <Content Include="Views\Utenti\Register.cshtml" />
-    <Content Include="Views\Utenti\_FormUtente.cshtml" />
-    <Content Include="Views\Utenti\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

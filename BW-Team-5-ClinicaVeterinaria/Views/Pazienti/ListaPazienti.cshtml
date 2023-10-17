@@ -4,12 +4,10 @@
     ViewBag.Title = "ListaPazienti";
 }
 
-<h2>Index</h2>
+<h2 class="text-center my-3">Gestione Pazienti</h2>
+<div class="table-responsive">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="container table table-active">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Clienti.Nome)
@@ -35,7 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.IsHospitalized)
         </th>
-        <th></th>
+        <th>
+            <a href="AddPaziente"><i class="fa-solid fa-plus"style="color: #288d8f;"></i></a>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -59,17 +59,19 @@
             @Html.DisplayFor(modelItem => item.Microchip)
         </td>
         <td>
-            <img src="~/Content/img/@item.Foto" alt="Alternate Text" />
+            <img class="img-fluid" src="~/Content/img/@item.Foto" alt="Alternate Text" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsHospitalized)
         </td>
         <td>
-            @Html.ActionLink("Modifica","EditPaziente", new { id=item.IdPaziente }) |
-            @Html.ActionLink("Dettaglio Paziente", "DettagliPaziente", new { id=item.IdPaziente }) |
-            @Html.ActionLink("Elimina", "Delete", new { id=item.IdPaziente })
+            <a href="EditPaziente?id=@item.IdPaziente"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+            <a href="DettagliPaziente?id=@item.IdPaziente"><i class="fa-solid fa-circle-info"style="color: #288d8f;"></i></a>
+            <a href="Delete?id=@item.IdPaziente"><i class="fa-regular fa-trash-can"style="color: #288d8f;"></i></a>
+           
         </td>
     </tr>
 }
 
 </table>
+</div>
