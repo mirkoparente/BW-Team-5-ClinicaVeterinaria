@@ -15,14 +15,12 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
     {
         private ContextDbModel db = new ContextDbModel();
 
-        // GET: Pazienti
         public ActionResult ListaPazienti()
         {
             var paziente = db.Paziente.Include(p => p.Clienti).Include(p => p.TipoPaziente);
             return View(paziente.ToList());
         }
 
-        // GET: Pazienti/Details/5
         public ActionResult DettagliPaziente(int? id)
         {
             if (id == null)
@@ -37,7 +35,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
-        // GET: Pazienti/Create
         public ActionResult AddPaziente()
         {
             ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
@@ -45,9 +42,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View();
         }
 
-        // POST: Pazienti/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
@@ -77,7 +72,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
             }
 
-        // GET: Pazienti/Edit/5
         public ActionResult EditPaziente(int? id)
         {
 
@@ -95,9 +89,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
-        // POST: Pazienti/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
@@ -124,7 +116,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
-        // GET: Pazienti/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -139,7 +130,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
-        // POST: Pazienti/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
