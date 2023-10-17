@@ -4,10 +4,9 @@
     ViewBag.Title = "DettagliPaziente";
 }
 
-<h2>Details</h2>
+<h2 class="text-center my-3">Dettagli Paziente</h2>
 
 <div>
-    <h4>Paziente</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -63,7 +62,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Foto)
+            <img class="img-fluid" src="~/Content/img/@Model.Foto" alt="Alternate Text" />
         </dd>
 
         <dt>
@@ -77,6 +76,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPaziente }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Torna alla Gestione", "ListaPazienti", new {@class="btn btn-outline-info"})
 </p>

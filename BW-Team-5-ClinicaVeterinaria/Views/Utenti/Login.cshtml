@@ -42,9 +42,12 @@
                                             @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input", id = "rememberMe" })
                                             @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "form-check-label", @for = "rememberMe" })
                                         </div>
+                                </div>
+                                       <div class="col">
+                                        @Html.ActionLink("Registrati", "Register", "Utenti", new { area = "" }, new { })
+                                       </div>
                                         
                                   
-                                </div>
                             </div>
 
                             <!-- Submit button -->
