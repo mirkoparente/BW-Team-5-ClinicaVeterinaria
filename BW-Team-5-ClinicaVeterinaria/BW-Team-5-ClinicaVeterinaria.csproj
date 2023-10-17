@@ -163,10 +163,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\ClientisController.cs" />
+    <Compile Include="Controllers\ClientiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
     <Compile Include="Controllers\UtentiController.cs" />
+    <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,11 +273,20 @@
     <Content Include="Views\Pazienti\DettagliPaziente.cshtml" />
     <Content Include="Views\Pazienti\EditPaziente.cshtml" />
     <Content Include="Views\Pazienti\ListaPazienti.cshtml" />
-    <Content Include="Views\Clientis\Create.cshtml" />
-    <Content Include="Views\Clientis\Delete.cshtml" />
-    <Content Include="Views\Clientis\Details.cshtml" />
-    <Content Include="Views\Clientis\Edit.cshtml" />
-    <Content Include="Views\Clientis\Index.cshtml" />
+    <Content Include="Views\Clienti\Create.cshtml" />
+    <Content Include="Views\Clienti\Delete.cshtml" />
+    <Content Include="Views\Clienti\Details.cshtml" />
+    <Content Include="Views\Clienti\Edit.cshtml" />
+    <Content Include="Views\Clienti\Index.cshtml" />
+    <Content Include="Views\Utenti\Login.cshtml" />
+    <Content Include="Views\Utenti\Register.cshtml" />
+    <Content Include="Views\Utenti\_FormUtente.cshtml" />
+    <Content Include="Views\Utenti\EditProfile.cshtml" />
+    <Content Include="Views\Visite\Create.cshtml" />
+    <Content Include="Views\Visite\Delete.cshtml" />
+    <Content Include="Views\Visite\Details.cshtml" />
+    <Content Include="Views\Visite\Edit.cshtml" />
+    <Content Include="Views\Visite\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
