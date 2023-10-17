@@ -9,7 +9,7 @@
 {
 @Html.AntiForgeryToken()
 
-<section class="vh-100">
+<section>
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-12 col-xl-11">
@@ -22,81 +22,83 @@
                                          class="img-fluid" alt="Sample image">
 
                                 </div>
-                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Modifica Paziente</p>
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Modifica Paziente</p>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(m=>m.IdPaziente)
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-group  form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @id = "Nome" } })
-                                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label", @for = "Nome" })
-                                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-group  form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @id = "Nome" } })
+                                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label", @for = "Nome" })
+                                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.DataNascita, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "DataNascita" } })
-                                        @Html.LabelFor(model => model.DataNascita, htmlAttributes: new { @class = "form-label", @for = "DataNascita" })
-                                        @Html.ValidationMessageFor(model => model.DataNascita, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.DataNascita, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "DataNascita" } })
+                                            @Html.LabelFor(model => model.DataNascita, htmlAttributes: new { @class = "form-label", @for = "DataNascita" })
+                                            @Html.ValidationMessageFor(model => model.DataNascita, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.ColoreMantello, new { htmlAttributes = new { @class = "form-control", @id = "ColoreMantello" } })
-                                        @Html.LabelFor(model => model.ColoreMantello, htmlAttributes: new { @class = "form-label", @for = "ColoreMantello" })
-                                        @Html.ValidationMessageFor(model => model.ColoreMantello, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.ColoreMantello, new { htmlAttributes = new { @class = "form-control", @id = "ColoreMantello" } })
+                                            @Html.LabelFor(model => model.ColoreMantello, htmlAttributes: new { @class = "form-label", @for = "ColoreMantello" })
+                                            @Html.ValidationMessageFor(model => model.ColoreMantello, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.Microchip, new { htmlAttributes = new { @class = "form-control", @id = "Microchip" } })
-                                        @Html.LabelFor(model => model.Microchip, htmlAttributes: new { @class = "form-label", @for = "Microchip" })
-                                        @Html.ValidationMessageFor(model => model.Microchip, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.Microchip, new { htmlAttributes = new { @class = "form-control", @id = "Microchip" } })
+                                            @Html.LabelFor(model => model.Microchip, htmlAttributes: new { @class = "form-label", @for = "Microchip" })
+                                            @Html.ValidationMessageFor(model => model.Microchip, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
-                                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                                            @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
 
 
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "form-label", @for = "IdTipo" })
-                                        @Html.DropDownList("IdTipo", null, htmlAttributes: new { @class = "form-select", @id = "IdTipo" })
-                                        @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.LabelFor(model => model.IdClienti, htmlAttributes: new { @class = "form-label", @for = "IdClienti" })
+                                            @Html.DropDownList("IdClienti", null, htmlAttributes: new { @class = "form-select", @id = "IdClienti" })
+                                            @Html.ValidationMessageFor(model => model.IdClienti, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.LabelFor(model => model.IdClienti, htmlAttributes: new { @class = "form-label", @for = "IdClienti" })
-                                        @Html.DropDownList("IdClienti", null, htmlAttributes: new { @class = "form-select", @id = "IdClienti" })
-                                        @Html.ValidationMessageFor(model => model.IdClienti, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "form-label", @for = "IdTipo" })
+                                            @Html.DropDownList("IdTipo", null, htmlAttributes: new { @class = "form-select", @id = "IdTipo" })
+                                            @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        @Html.EditorFor(model => model.IsHospitalized, new { htmlAttributes = new { @class = "form-checkbox", @id = "IsHospitalized" } })
-                                        @Html.LabelFor(model => model.IsHospitalized, htmlAttributes: new { @class = "form-label", @for = "IsHospitalized" })
-                                        @Html.ValidationMessageFor(model => model.IsHospitalized, "", new { @class = "text-danger" })
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.EditorFor(model => model.IsHospitalized, new { htmlAttributes = new { @class = "form-checkbox", @id = "IsHospitalized" } })
+                                            @Html.LabelFor(model => model.IsHospitalized, htmlAttributes: new { @class = "form-label", @for = "IsHospitalized" })
+                                            @Html.ValidationMessageFor(model => model.IsHospitalized, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
+
+
+
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Modifica Paziente</button>
+                                    </div>
+
+
                                 </div>
-
-
-
-                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">Modifica Paziente</button>
-                                </div>
-
-
-                            </div>
                            
                         </div>
                     </div>

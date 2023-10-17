@@ -72,7 +72,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             
 
         }
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
             }
@@ -90,7 +90,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }
@@ -119,7 +119,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     db.SaveChanges();
                     return RedirectToAction("ListaPazienti");
                 }
-            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");
+            ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome", paziente.IdClienti);
             ViewBag.IdTipo = new SelectList(db.TipoPaziente, "IdTipo", "Tipologia", paziente.IdTipo);
             return View(paziente);
         }
