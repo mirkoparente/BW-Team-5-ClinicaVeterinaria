@@ -1,0 +1,74 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Prodotti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Prodotti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cassetti.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cassetti.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Tiplogia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornitori.RagioneSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descrizione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantitaDisponibile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantitaDisponibile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrezzoUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrezzoUnitario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProdotti }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
