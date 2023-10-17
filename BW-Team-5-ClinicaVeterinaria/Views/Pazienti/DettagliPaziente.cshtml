@@ -6,8 +6,12 @@
 
 <h2 class="text-center my-3">Dettagli Paziente</h2>
 
-<div>
+<div class="container row">
+    <div class="col">
+
     <hr />
+    <div>
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Clienti.Nome)
@@ -75,6 +79,34 @@
 
     </dl>
 </div>
+    </div>
+    <div class="col">
+        @foreach(var item in Model.Visite)
+            {
+                <div class="table-responsive">
+                    <div class="table table-active">
+                      <table>
+                          <tr>
+                              <th>Descrizione</th>
+                              <th>Anamnesi</th>
+                          </tr>
+                          <tr>
+                              <td>
+                @item.Descrizione
+
+                              </td>
+                              <td>
+                @item.Ananmnesi
+
+                              </td>
+
+                          </tr>
+                      </table>
+                    </div>
+                </div>
+            }
+    </div>
+    </div>
 <p>
     @Html.ActionLink("Torna alla Gestione", "ListaPazienti", new {@class="btn btn-outline-info"})
 </p>
