@@ -11,7 +11,7 @@
 <table class="container table table-active">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Clienti.Nome)
+            Cliente
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoPaziente.Tipologia)
@@ -40,9 +40,21 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+
+
+<tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+
+            @if (item.IdClienti == null)
+            {
+
+                <p>Randagio</p>
+            }
+            else
+            {
+
+                @Html.DisplayFor(modelItem => item.Clienti.Nome) @Html.DisplayFor(modelItem => item.Clienti.Cognome)
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoPaziente.Tipologia)

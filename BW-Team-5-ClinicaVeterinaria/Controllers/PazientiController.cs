@@ -51,6 +51,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
            
             if (ModelState.IsValid)
             {
+               
+
                 if (Foto != null)
                 {
                     string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
