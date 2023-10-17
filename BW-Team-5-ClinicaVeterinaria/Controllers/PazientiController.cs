@@ -150,5 +150,29 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Ricoveri()
+        {
+            return View();
+        }
+
+        public JsonResult RicoveriAttivi()
+        {
+
+            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true).ToList();
+            List<PazientiToJson> pat=new List<PazientiToJson>();
+            foreach(Paziente paz in p)
+            {
+                PazientiToJson pa=new PazientiToJson();
+                pa.IdPaziente=paz.IdPaziente;
+                pa.Foto=paz.Foto;
+                pa.Nome=paz.Nome;
+
+                pat.Add(pa);
+            }
+
+            return Json(pat, JsonRequestBehavior.AllowGet);
+        }
     }
 }

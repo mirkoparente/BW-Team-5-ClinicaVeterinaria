@@ -194,6 +194,7 @@
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
     <Compile Include="Models\Paziente.cs" />
+    <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\ProdottiAcquistati.cs" />
     <Compile Include="Models\Role.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Views\Prodotti\Details.cshtml" />
     <Content Include="Views\Prodotti\Edit.cshtml" />
     <Content Include="Views\Prodotti\Index.cshtml" />
+    <Content Include="Views\Pazienti\Ricoveri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
