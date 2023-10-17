@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.TipoPaziente>
 @{
     ViewBag.Title = "Ricoveri";
 }
@@ -15,20 +15,18 @@
                         <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.1.0.0.0.0">Ricoveri Attivi</h2>
                         <p class="lead text-muted mb-5" data-config-id="desc" data-path="0.1.1.0.0.0.1">Cerca i ricoveri attivi in base alla specie del tuo animale </p>
                         <div class="d-flex">
+                       
+                            
+                            @foreach(var ite in Model)
+                            {
+                            <button class="btn btn-outline-info" id=@ite.IdTipo>@ite.Tipologia</button>
+            }
 
-                            <input type="checkbox" class="form-check me-2" name="cane" id="cane" value="" />
-                            <p class="col-form-label">Cane</p>
-
-                        </div>
-                        <div class="d-flex">
-
-                            <input type="checkbox" class="form-check me-2" name="gatto" id="gatto" value="" />
-                            <p class="col-form-label">Gatto</p>
-
+                            
                         </div>
 
-                        <div class="d-flex flex-wrap" data-path="0.1.1.0.0.0.2">
-                            <button class="btn btn-primary me-2 mb-2 mb-sm-0" id="cerca">Cerca</button>
+                        <div class="d-flex flex-wrap mt-3 justify-content-center" data-path="0.1.1.0.0.0.2">
+                            <button class="btn btn-primary me-2 mb-2 mb-sm-0" id="cerca">Vedi tutti i ricoveri</button>
                         </div>
 
                     </div>
@@ -37,8 +35,9 @@
         </div>
     </div>
 </section>
-<div id="risultato" style="display:none">
-    <div id="ca"></div>
+<div id="risultato" class="mt-5" style="display:none">
+    <div  class="d-flex justify-content-between" id="ca">
+    </div>
 </div>
 <p id="tot" class="text-center mt-5"></p>
 
@@ -50,6 +49,8 @@
             $("#cerca").click(function () {
                 $("#risultato").slideToggle()
                 $("tot").toggleClass("d-none")
+                $("#ca").empty()
+
                 $.ajax({
                     method: "GET",
                     url: "Pazienti/RicoveriAttivi",
@@ -57,22 +58,76 @@
                         console.log(d)
 
                         $.each(d, function (i, v) {
-                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
-      <img src="${~/Content/img / v.Foto}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${v.IdPaziente}</h5>
-        <p class="card-text">${v.Nome}</p>
+                            var c=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${v.IdPaziente}</h5>
+            <p class="card-text">${v.Nome}</p>
 
-      </div>
-</div></a>`)
+          </div>
+</div></a>`
+    $("#ca").append(c)
+        
                         })
-                    $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
+                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
                     }
 
 
                 })
             })
 
+
+            $("#1").click(function () {
+                $("#risultato").slideToggle()
+                $("tot").toggleClass("d-none")
+                $("#ca").empty()
+                $.ajax({
+                    method: "GET",
+                    url: "Pazienti/RicoveriAttiviTipo",
+                    success: function (d) {
+                        console.log(d)
+
+                        $.each(d, function (i, v) {
+                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${v.IdPaziente}</h5>
+            <p class="card-text">${v.Nome}</p>
+
+          </div>
+</div></a>`)
+                        })
+                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
+                    }
+
+
+                })
+            })
+            $("#2").click(function () {
+                $("#risultato").slideToggle()
+                $("tot").toggleClass("d-none")
+                $.ajax({
+                    method: "GET",
+                    url: "Pazienti/RicoveriAttiviTipo",
+                    success: function (d) {
+                        console.log(d)
+
+                        $.each(d, function (i, v) {
+                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${v.IdPaziente}</h5>
+            <p class="card-text">${v.Nome}</p>
+
+          </div>
+</div></a>`)
+                        })
+                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
+                    }
+
+
+                })
+            })
 
 
 

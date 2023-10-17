@@ -154,13 +154,27 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
 
         public ActionResult Ricoveri()
         {
-            return View();
+            return View(db.TipoPaziente.ToList());
         }
 
         public JsonResult RicoveriAttivi()
         {
-
             List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true).ToList();
+            List<PazientiToJson> pat=new List<PazientiToJson>();
+            foreach(Paziente paz in p)
+            {
+                PazientiToJson pa=new PazientiToJson();
+                pa.IdPaziente=paz.IdPaziente;
+                pa.Foto=paz.Foto;
+                pa.Nome=paz.Nome;
+
+                pat.Add(pa);
+            }
+
+            return Json(pat, JsonRequestBehavior.AllowGet);
+        }    public JsonResult RicoveriAttiviTipo()
+        {
+            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true && o.IdTipo==o.IdTipo).ToList();
             List<PazientiToJson> pat=new List<PazientiToJson>();
             foreach(Paziente paz in p)
             {
