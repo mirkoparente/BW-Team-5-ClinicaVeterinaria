@@ -1,0 +1,80 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Prodotti
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Prodotti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cassetti.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cassetti.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Tiplogia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornitori.RagioneSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descrizione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantitaDisponibile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantitaDisponibile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrezzoUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrezzoUnitario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
