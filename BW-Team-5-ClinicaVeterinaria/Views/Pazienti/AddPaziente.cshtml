@@ -45,6 +45,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="d-flex">
+
+                                    <input type="checkbox" class="form-check me-2" name="randagio" id="randagio" value="" />
+                                    <p class="col-form-label">Randagio</p>
+                                    
+                                    </div>
+
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
@@ -63,11 +70,11 @@
 
 
 
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
+                                  
+                                    <div class="d-flex flex-row align-items-center mb-4" id="clienti">
                                         <div class="form-outline flex-fill mb-0">
                                             @Html.LabelFor(model => model.IdClienti, htmlAttributes: new { @class = "form-label", @for = "IdClienti" })
-                                            @Html.DropDownList("IdClienti", null, htmlAttributes: new { @class = "form-select", @id = "IdClienti" })
+                                            @Html.DropDownList("IdClienti", null, "Seleziona", htmlAttributes: new { @class = "form-select", @id = "IdClienti" })
                                             @Html.ValidationMessageFor(model => model.IdClienti, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -114,4 +121,22 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#randagio").change(function () {
+                var isCheck = $(this).prop('checked')
+                console.log(isCheck)
+                var divhidden = $("#clienti")
+                console.log(divhidden)
+                if (isCheck) {
+                    divhidden.addClass('d-none')
+                } else {
+                    divhidden.removeClass('d-none')
+
+                }
+            })
+
+        })
+
+    </script>
 }
