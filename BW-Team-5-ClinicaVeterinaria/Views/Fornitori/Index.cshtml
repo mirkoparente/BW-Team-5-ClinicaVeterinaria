@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.Fornitori>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista fornitori</h2>
+<table class="table">
+    <tr>
+        <th>
+            Ragione Sociale
+        </th>
+        <th>
+            Indirizzo
+        </th>
+        <th>
+            P.Iva
+        </th>
+        <th>
+            Città
+        </th>
+        <th>
+            Recapito
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RagioneSociale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indirizzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Piva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recapito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFornitori }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFornitori }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFornitori })
+        </td>
+    </tr>
+}
+
+</table>
