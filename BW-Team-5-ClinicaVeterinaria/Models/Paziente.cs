@@ -24,6 +24,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         [Column(TypeName = "date")]
         [Display(Name ="Data di Nascita")]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataNascita { get; set; }
 
         [Required]
@@ -41,6 +42,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Display(Name ="Ricoverato")]
         public bool IsHospitalized { get; set; }
 
+
+        [Display(Name ="Clienti")]
         public int? IdClienti { get; set; }
 
 

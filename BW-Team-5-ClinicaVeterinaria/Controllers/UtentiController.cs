@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using BW_Team_5_ClinicaVeterinaria.Models.Classi;
 using BW_Team_5_ClinicaVeterinaria.Models;
+using System.Data.Entity;
 
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
@@ -25,19 +26,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 Utente user = dbContext.Utente.FirstOrDefault(e => e.Email == u.Email);
                 if (user.Email == u.Email && user.Password == u.Password)
                 {
                     dbContext.Dispose();
-                    if (u.RememberMe) 
+                    if (u.RememberMe)
                     {
                         FormsAuthentication.SetAuthCookie(user.Email, true);
-                    }else
+                    }
+                    else
                     {
                         FormsAuthentication.SetAuthCookie(user.Email, false);
                     }
-                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -55,8 +57,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
         }
 
-        public ActionResult Logout () 
-        { 
+        public ActionResult Logout()
+        {
             FormsAuthentication.SignOut();
             return RedirectToAction("index", "Home");
         }
@@ -68,10 +70,64 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Exclude = "IDRuolo")] Utente user)
+        public ActionResult Register([Bind(Exclude = "IDRuoli")] Utente user)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                user.IdRuoli = 1;
+                dbContext.Utente.Add(user);
+                try
+                {
+                    dbContext.SaveChanges();
+                    return RedirectToAction("Login", "Utenti");
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError("Si è verificato un errore durante la registrazione.", ex);
+                    return View(user);
+
+                }
+                finally
+                {
+                    dbContext.Dispose();
+                }
+            }
+
+            ModelState.AddModelError("", "compila tutti i campi");
+            return View(user);
         }
 
+        public ActionResult EditProfile (int id) 
+        {
+            Utente user = dbContext.Utente.Find(id);
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(Utente user)
+        {
+            
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                dbContext.Entry(user).State = EntityState.Modified;
+                dbContext.SaveChanges();
+                return RedirectToAction("Index","Home");
+                }
+                catch (Exception ex) 
+                {
+                    ModelState.AddModelError("", "Errore di comuncazione col server");
+                    return View(user);
+                }
+                finally { dbContext.Dispose(); }
+            }
+            ModelState.AddModelError("", "compila tutti i campi obbligatori");
+            return View(user);
+        }
     }
 }
