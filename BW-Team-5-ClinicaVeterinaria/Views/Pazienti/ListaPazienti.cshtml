@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.Paziente>
+
+@{
+    ViewBag.Title = "ListaPazienti";
+}
+
+<h2 class="text-center my-3">Gestione Pazienti</h2>
+<div class="table-responsive">
+
+<table class="container table table-active">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clienti.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPaziente.Tipologia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColoreMantello)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Microchip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHospitalized)
+        </th>
+        <th>
+            <a href="AddPaziente"><i class="fa-solid fa-plus"style="color: #288d8f;"></i></a>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPaziente.Tipologia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColoreMantello)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Microchip)
+        </td>
+        <td>
+            <img class="img-fluid" src="~/Content/img/@item.Foto" alt="Alternate Text" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsHospitalized)
+        </td>
+        <td>
+            <a href="EditPaziente?id=@item.IdPaziente"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+            <a href="DettagliPaziente?id=@item.IdPaziente"><i class="fa-solid fa-circle-info"style="color: #288d8f;"></i></a>
+            <a href="Delete?id=@item.IdPaziente"><i class="fa-regular fa-trash-can"style="color: #288d8f;"></i></a>
+           
+        </td>
+    </tr>
+}
+
+</table>
+</div>

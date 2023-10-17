@@ -12,6 +12,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Key]
         public int IdVisite { get; set; }
 
+        [Required]
+
+        public DateTime Data {  get; set; }
+
         public int IdPaziente { get; set; }
 
         [Required]

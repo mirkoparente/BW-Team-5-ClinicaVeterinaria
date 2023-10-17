@@ -1,0 +1,44 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Utente
+
+<section>
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="~/Content/Img/pexels-sam-lion-5733422.jpg"
+                     class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <h3>inserisci i tuoi dati</h3>
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @id = "Nome" } })
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label", @for = "Nome" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                <!-- Cognome input -->
+                <div class="form-outline mb-4">
+                    @Html.EditorFor(model => model.Cognome, new { htmlAttributes = new { @class = "form-control", @id = "Cognome" } })
+                    @Html.LabelFor(model => model.Cognome, htmlAttributes: new { @class = "form-label", @for = "Cognome" })
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "Email" } })
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label", @for = "Email" })
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @id = "Password", type = "password" } })
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label", @for = "Password" })
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
