@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202310161516090_DataVisite.Designer.cs">
       <DependentUpon>202310161516090_DataVisite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310180944011_Codicefiscale.cs" />
+    <Compile Include="Migrations\202310180944011_Codicefiscale.designer.cs">
+      <DependentUpon>202310180944011_Codicefiscale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -389,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310161516090_DataVisite.resx">
       <DependentUpon>202310161516090_DataVisite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310180944011_Codicefiscale.resx">
+      <DependentUpon>202310180944011_Codicefiscale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

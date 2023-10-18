@@ -31,6 +31,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [StringLength(50)]
         public string Telefono { get; set; }
 
+        [Required]
+        [StringLength(16)]
+        public string CodiceFiscale {  get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProdottiAcquistati> ProdottiAcquistati { get; set; }
 
