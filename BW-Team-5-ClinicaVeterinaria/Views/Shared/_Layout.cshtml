@@ -68,7 +68,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
-                            @Html.ActionLink("admin ", "EditProfile", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("admin ", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })
                         </li>
                     }
                     else if (User.IsInRole("Veterinario"))

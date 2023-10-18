@@ -4,88 +4,67 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center my-3">Lista prodotti</h2>
+<div class="table-responsive">
+    <table class="container table table-active">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cassetti.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descrizione
+            </th>
+            <th>
+                Quantità Disponibile
+            </th>
+            <th>
+                Prezzo Unitario
+            </th>
+            <th>
+                <a href="Prodotti/Create"><i class="fa-solid fa-plus" style="color: #288d8f;"></i></a>
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cassetti.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descrizione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuantitaDisponibile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrezzoUnitario)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cassetti.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Tiplogia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornitori.RagioneSociale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descrizione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantitaDisponibile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrezzoUnitario)
+                </td>
+                <td>
+                    <a href="Prodotti/Edit?id=@item.IdProdotti"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+                    <a href="Prodotti/Details?id=@item.IdProdotti"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
+                    <a href="Prodotti/Delete?id=@item.IdProdotti"><i class="fa-regular fa-trash-can" style="color: #288d8f;"></i></a>
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cassetti.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria.Tiplogia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fornitori.RagioneSociale)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descrizione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuantitaDisponibile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrezzoUnitario)
-        </td>
-        <td>
-            <a href="#" id="listaProd">Aggiungi al carrello<i class="bi bi-cart" style="color: #288d8f;"></i></a>
-        </td>   
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProdotti }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProdotti }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProdotti })
-        </td>
-    </tr>
-}
-
-</table>
-
-@section script{
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#listaProd').click(function () {
-                var prodottoDaSalvare = $("item.IdProdotti").val();
-
-                $ajax({
-                    method: "GET",
-                    url: "AggiungiAlCarrello, Ordini",
-                    data: { nome: prodottoDaSalvare },
-                    success: function (data) {
-                        $(".risultato").
-                    }
-                })
-            })
-        })
-    </script>
-    }
+    </table>
+</div>

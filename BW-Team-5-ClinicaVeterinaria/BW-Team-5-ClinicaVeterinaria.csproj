@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClientiController.cs" />
     <Compile Include="Controllers\FornitoriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\ProdottiAcquistati.cs" />
+    <Compile Include="Models\ProdottiToJson.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Ruoli.cs" />
     <Compile Include="Models\sysdiagrams.cs" />
@@ -315,6 +317,8 @@
     <Content Include="Views\Prodotti\Edit.cshtml" />
     <Content Include="Views\Prodotti\Index.cshtml" />
     <Content Include="Views\Pazienti\Ricoveri.cshtml" />
+    <Content Include="Views\Prodotti\CercaProdotti.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Ordini\Create.cshtml" />
     <Content Include="Views\Ordini\Delete.cshtml" />
     <Content Include="Views\Ordini\Details.cshtml" />

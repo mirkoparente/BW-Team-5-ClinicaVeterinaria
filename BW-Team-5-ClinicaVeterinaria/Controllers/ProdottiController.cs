@@ -132,5 +132,34 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult CercaProdotti()
+        {
+            Prodotti p=new Prodotti();
+            return View(p);
+        }
+
+
+        
+        public JsonResult Cerca(string Nome)
+        {
+            List<Prodotti> p = db.Prodotti.Where(n=>n.Nome==Nome).ToList();
+            List<ProdottiToJson> pro = new List<ProdottiToJson>();
+
+            foreach(Prodotti pitem in p)
+            {
+                ProdottiToJson pt =new ProdottiToJson();
+
+                pt.Nome =pitem.Nome;
+                pt.IdProdotti =pitem.IdProdotti;
+                pt.NomeCassetto = pitem.Cassetti.Nome;
+                pt.NomeArmadietto = pitem.Cassetti.Armadietti.Nome;
+                pt.Descrizione = pitem.Descrizione;
+                pro.Add(pt);
+            }
+
+            return Json(pro,JsonRequestBehavior.AllowGet);
+        }
     }
 }
