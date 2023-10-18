@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-      <base href="/" />
+    <base href="/" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
 
     @Styles.Render("~/Content/css")
@@ -136,7 +136,9 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Gestione Pazienti", "ListaPazienti", "Pazienti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Gestione Clienti", "Index", "Clienti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Ricoveri Attivi", "Ricoveri", "Pazienti", new { area = "" }, new { @class = "nav-link" })</li>
                     </ul>
                 </div>
             </div>
@@ -252,7 +254,9 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Registrati", "Register", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Farmacia", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
                     </ul>
                 </div>
             </div>
@@ -265,41 +269,40 @@
         </div>
     </div>
     <section class="text-center">
-    <footer class="footer text-bg-dark mt-auto p-3 d-flex justify-content-center">
-           
-                <!-- Grid container -->
-                <div class="container p-4 pb-0">
-                    <!-- Section: Social media -->
-                    <section class="mb-4">
-                        <!-- Facebook -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+        <footer class="footer text-bg-dark mt-auto p-3 d-flex justify-content-center">
 
-                        <!-- Twitter -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
 
-                        <!-- Google -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+                    <!-- Twitter -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
 
-                        <!-- Instagram -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+                    <!-- Google -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
 
-                        <!-- Linkedin -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                    <!-- Instagram -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
 
-                       
-                       
-                    </section>
-                    <!-- Section: Social media -->
-                </div>
-                <!-- Grid container -->
-             
-                <!-- Copyright -->
-        <p>&copy; @DateTime.Now.Year VETERIN-EPI </p>
-            
+                    <!-- Linkedin -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
 
 
-    </footer>
-        </section>
+
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+            <!-- Copyright -->
+            <p>&copy; @DateTime.Now.Year VETERIN-EPI </p>
+
+
+
+        </footer>
+    </section>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
