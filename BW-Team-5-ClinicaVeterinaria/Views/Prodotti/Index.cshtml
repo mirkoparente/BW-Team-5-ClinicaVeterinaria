@@ -59,6 +59,9 @@
             @Html.DisplayFor(modelItem => item.PrezzoUnitario)
         </td>
         <td>
+            <a href="#" id="listaProd">Aggiungi al carrello<i class="bi bi-cart" style="color: #288d8f;"></i></a>
+        </td>   
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdProdotti }) |
             @Html.ActionLink("Details", "Details", new { id=item.IdProdotti }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IdProdotti })
@@ -67,3 +70,22 @@
 }
 
 </table>
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#listaProd').click(function () {
+                var prodottoDaSalvare = $("item.IdProdotti").val();
+
+                $ajax({
+                    method: "GET",
+                    url: "AggiungiAlCarrello, Ordini",
+                    data: { nome: prodottoDaSalvare },
+                    success: function (data) {
+                        $(".risultato").
+                    }
+                })
+            })
+        })
+    </script>
+    }

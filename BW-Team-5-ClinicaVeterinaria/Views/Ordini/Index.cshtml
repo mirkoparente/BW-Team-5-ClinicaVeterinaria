@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.Ordinis>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clienti.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataOrdine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotaleOrdine)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataOrdine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotaleOrdine)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdOrdini }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdOrdini }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdOrdini })
+        </td>
+    </tr>
+}
+
+</table>
