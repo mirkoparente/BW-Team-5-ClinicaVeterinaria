@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202310180944011_Codicefiscale.designer.cs">
       <DependentUpon>202310180944011_Codicefiscale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310181052207_createTableOrdiniMoltiAMolti.cs" />
+    <Compile Include="Migrations\202310181052207_createTableOrdiniMoltiAMolti.designer.cs">
+      <DependentUpon>202310181052207_createTableOrdiniMoltiAMolti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -198,6 +202,7 @@
     <Compile Include="Models\Clienti.cs" />
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
+    <Compile Include="Models\Ordinis.cs" />
     <Compile Include="Models\Paziente.cs" />
     <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
@@ -398,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310180944011_Codicefiscale.resx">
       <DependentUpon>202310180944011_Codicefiscale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310181052207_createTableOrdiniMoltiAMolti.resx">
+      <DependentUpon>202310181052207_createTableOrdiniMoltiAMolti.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
