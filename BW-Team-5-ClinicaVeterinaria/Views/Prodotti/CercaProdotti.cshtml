@@ -1,0 +1,89 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Prodotti
+
+@{
+    ViewBag.Title = "CercaProdotti";
+}
+
+            
+
+    <section data-section-id="2" data-share="" data-category="headers" data-component-id="44d0b9e2_02_awz" class="position-relative pb-5" data-path="0">
+        <div class="position-relative" data-path="0.1">
+            <div class="container" data-path="0.1.1">
+                <div class="row pt-5" data-path="0.1.1.0">
+                    <div class="col-12 col-lg-5 ms-auto" data-path="0.1.1.0.0">
+                        <div class="mb-5" data-path="0.1.1.0.0.0">
+                            <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.1.0.0.0.0">Cerca Prodotti</h2>
+                            <div class="d-flex">
+                                <input type="text" name="Nome" value="" id="prodotto" />                            </div>
+
+                            <div class="d-flex flex-wrap mt-3 justify-content-center" data-path="0.1.1.0.0.0.2">
+                                <button class="btn btn-primary me-2 mb-2 mb-sm-0"type="button" id="cerca">Cerca</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid" style="object-fit: contain;" src="https://www.farmaciafontana.com/wp-content/uploads/2022/11/vet.jpg" alt="" data-config-id="02_image" data-path="0.0">
+    </section>
+
+
+<div id="risultato" class="mt-5" style="display:none">
+    <div class="w-50" id="ca">
+    </div>
+</div>
+            
+
+@section scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cerca").click(function () {
+                var val = $('#prodotto').val()
+                console.log(val)
+                $("#risultato").slideToggle()
+                $("#ca").empty()
+
+                $.ajax({
+                    method: "GET",
+                    url: "Prodotti/Cerca",
+                    data: {Nome:val},
+                    success: function (d) {
+                        console.log(d)
+
+                        $.each(d, function (i, v) {
+                            var c = `<a href="./Prodotti/Index?id=${v.IdProdotti}" ><div class="card" style="width: 18rem;">
+             
+              <div class="card-body">
+                <h5 class="card-title">${v.Nome}</h5>
+
+                <p class="card-text">${v.Descrizione}</p>
+                <p class="card-text">${v.NomeArmadietto}</p>
+                <p class="card-text">Cassetto: ${v.NomeCassetto}</p>
+
+              </div>
+    <div class="d-flex justify-content-center">
+    <a href="./Ordini/AggiungiAlCarrello?id=${v.IdProdotti}" class="btn btn-primary my-3">Acquista</a>
+    </div>
+</div>
+    
+    </a>`
+    
+                            $("#ca").append(c)
+
+                        })
+                    }
+
+
+                })
+            })
+
+        })
+
+
+
+
+
+    </script>
+}
