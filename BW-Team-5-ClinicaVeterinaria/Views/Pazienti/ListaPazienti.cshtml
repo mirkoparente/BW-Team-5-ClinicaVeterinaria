@@ -35,7 +35,7 @@
             @Html.DisplayNameFor(model => model.IsHospitalized)
         </th>
         <th>
-            <a href="AddPaziente"><i class="fa-solid fa-plus"style="color: #288d8f;"></i></a>
+            <a href="Pazienti/AddPaziente"><i class="fa-solid fa-plus"style="color: #288d8f;"></i></a>
         </th>
     </tr>
 
@@ -72,7 +72,10 @@
             @Html.DisplayFor(modelItem => item.Microchip)
         </td>
         <td>
+            <div class="w-25">
+
             <img class="img-fluid" src="~/Content/img/@item.Foto" alt="Alternate Text" />
+            </div>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsHospitalized)
