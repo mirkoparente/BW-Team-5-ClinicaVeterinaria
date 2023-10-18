@@ -93,6 +93,11 @@
 </div>
     </div>
     <div class="col">
+        
+    @if (Model.Visite.Count==0 )
+                {
+                    <p class="mt-2">Non ci sono visite</p>
+                }
         @foreach (var item in Model.Visite)
         {
             <div class="table-responsive">
@@ -101,6 +106,7 @@
                         <tr>
                             <th>Descrizione</th>
                             <th>Anamnesi</th>
+                            <th>Data visita</th>
                         </tr>
                         <tr>
                             <td>
@@ -110,6 +116,9 @@
                             <td>
                                 @item.Ananmnesi
 
+                            </td> 
+                            <td>
+                                @item.Data
                             </td>
 
                         </tr>

@@ -39,6 +39,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
+                visite.Data = DateTime.Now;
                 db.Visite.Add(visite);
                 db.SaveChanges();
                 return RedirectToAction("ListaPazienti", "Pazienti");

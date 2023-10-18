@@ -14,7 +14,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
     {
         ContextDbModel dbContext = new ContextDbModel();
 
-        // GET: Utenti
+      
         public ActionResult Login()
         {
             return View();
@@ -80,7 +80,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 {
                     isNewUtente = false;
                     break;
-                
                 }
             }
 
@@ -122,10 +121,11 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(user);
         }
 
-        public ActionResult EditProfile (int id) 
+        public ActionResult EditProfile () 
         {
-            Utente user = dbContext.Utente.Find(id);
-
+            string userEmail = User.Identity.Name; 
+            Utente user = dbContext.Utente.FirstOrDefault(e=>e.Email==userEmail);
+            user.ConfirmPassword = user.Password;
             return View(user);
         }
 
@@ -133,25 +133,56 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditProfile(Utente user)
         {
-            
-
-            if (ModelState.IsValid)
+            List<Utente> Utenti = dbContext.Utente.ToList();
+            bool isNewUtente = true;
+            foreach (var item in Utenti)
             {
-                try
+                if (item.Email == user.Email)
                 {
-                dbContext.Entry(user).State = EntityState.Modified;
-                dbContext.SaveChanges();
-                return RedirectToAction("Index","Home");
+                    isNewUtente = false;
+                    break;
                 }
-                catch (Exception ex) 
+            }
+
+            if (isNewUtente)
+            {
+                if (user.Password == user.ConfirmPassword)
                 {
-                    ModelState.AddModelError("", "Errore di comuncazione col server");
+                    if (ModelState.IsValid)
+                    {
+                        try
+                        {
+                            dbContext.Entry(user).State = EntityState.Modified;
+                            dbContext.SaveChanges();
+                            return RedirectToAction("Index", "Home");
+                        }
+                        catch (Exception ex)
+                        {
+                            ModelState.AddModelError("", "Errore di comuncazione col server");
+                            return View(user);
+                        }
+                        finally { dbContext.Dispose(); }
+                    }
+                    else
+                    {
+                        ViewBag.password = "compila tutti i campi";
+                        user.Password = null;
+                        user.ConfirmPassword = null;
+                        return View(user);
+                    }
+                }
+                else {
+                    ViewBag.password = "le password non coincidono";
+                    user.Password = null;
+                    user.ConfirmPassword = null;
                     return View(user);
                 }
-                finally { dbContext.Dispose(); }
             }
-            ModelState.AddModelError("", "compila tutti i campi obbligatori");
+            ViewBag.password = "utente già registrato";
+            user.Password = null;
+            user.ConfirmPassword = null;
             return View(user);
+
         }
     }
 }
