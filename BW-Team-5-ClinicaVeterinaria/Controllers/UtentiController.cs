@@ -121,10 +121,11 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(user);
         }
 
-        public ActionResult EditProfile (int id) 
+        public ActionResult EditProfile () 
         {
-            Utente user = dbContext.Utente.Find(id);
-
+            string userEmail = User.Identity.Name; 
+            Utente user = dbContext.Utente.FirstOrDefault(e=>e.Email==userEmail);
+            user.ConfirmPassword = user.Password;
             return View(user);
         }
 
