@@ -287,16 +287,16 @@
     <Content Include="Views\Utenti\Register.cshtml" />
     <Content Include="Views\Utenti\_FormUtente.cshtml" />
     <Content Include="Views\Utenti\EditProfile.cshtml" />
-    <Content Include="Views\Visite\Create.cshtml" />
     <Content Include="Views\Visite\Delete.cshtml" />
     <Content Include="Views\Visite\Details.cshtml" />
-    <Content Include="Views\Visite\Edit.cshtml" />
-    <Content Include="Views\Visite\Index.cshtml" />
     <Content Include="Views\Fornitori\Create.cshtml" />
     <Content Include="Views\Fornitori\Delete.cshtml" />
     <Content Include="Views\Fornitori\Details.cshtml" />
     <Content Include="Views\Fornitori\Edit.cshtml" />
     <Content Include="Views\Fornitori\Index.cshtml" />
+    <Content Include="Views\Visite\_CreateEditVisita.cshtml" />
+    <Content Include="Views\Visite\Create.cshtml" />
+    <Content Include="Views\Visite\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
