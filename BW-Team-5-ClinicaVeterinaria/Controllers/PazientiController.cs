@@ -51,6 +51,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
            
             if (ModelState.IsValid)
             {
+               
+
                 if (Foto != null)
                 {
                     string source = Path.Combine(Server.MapPath("~/Content/img"), Foto.FileName);
@@ -147,6 +149,47 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        public ActionResult Ricoveri()
+        {
+            return View(db.TipoPaziente.ToList());
+        }
+
+        public JsonResult RicoveriAttivi()
+        {
+            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true).ToList();
+            List<PazientiToJson> pat=new List<PazientiToJson>();
+            foreach(Paziente paz in p)
+            {
+                PazientiToJson pa=new PazientiToJson();
+                pa.IdPaziente=paz.IdPaziente;
+                pa.Foto=paz.Foto;
+                pa.Nome=paz.Nome;
+
+                pat.Add(pa);
+            }
+
+            return Json(pat, JsonRequestBehavior.AllowGet);
+        }    
+        
+        
+        public JsonResult RicoveriAttiviTipo(int id)
+        {
+            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true && o.IdTipo==id).ToList();
+            List<PazientiToJson> pat=new List<PazientiToJson>();
+            foreach(Paziente paz in p)
+            {
+                PazientiToJson pa=new PazientiToJson();
+                pa.IdPaziente=paz.IdPaziente;
+                pa.Foto=paz.Foto;
+                pa.Nome=paz.Nome;
+
+                pat.Add(pa);
+            }
+
+            return Json(pat, JsonRequestBehavior.AllowGet);
         }
     }
 }

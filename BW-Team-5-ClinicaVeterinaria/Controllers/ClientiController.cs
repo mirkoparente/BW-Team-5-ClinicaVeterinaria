@@ -10,7 +10,7 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
-    public class ClientisController : Controller
+    public class ClientiController : Controller
     {
         private ContextDbModel db = new ContextDbModel();
 

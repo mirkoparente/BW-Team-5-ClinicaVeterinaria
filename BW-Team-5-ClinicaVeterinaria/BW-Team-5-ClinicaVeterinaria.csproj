@@ -167,6 +167,7 @@
     <Compile Include="Controllers\FornitoriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
+    <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\UtentiController.cs" />
     <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,7 @@
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
     <Compile Include="Models\Paziente.cs" />
+    <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\ProdottiAcquistati.cs" />
     <Compile Include="Models\Role.cs" />
@@ -297,6 +299,12 @@
     <Content Include="Views\Visite\_CreateEditVisita.cshtml" />
     <Content Include="Views\Visite\Create.cshtml" />
     <Content Include="Views\Visite\Edit.cshtml" />
+    <Content Include="Views\Prodotti\Create.cshtml" />
+    <Content Include="Views\Prodotti\Delete.cshtml" />
+    <Content Include="Views\Prodotti\Details.cshtml" />
+    <Content Include="Views\Prodotti\Edit.cshtml" />
+    <Content Include="Views\Prodotti\Index.cshtml" />
+    <Content Include="Views\Pazienti\Ricoveri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

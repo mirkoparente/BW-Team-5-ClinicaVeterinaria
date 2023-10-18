@@ -1,0 +1,140 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.TipoPaziente>
+@{
+    ViewBag.Title = "Ricoveri";
+}
+
+
+
+<section data-section-id="2" data-share="" data-category="headers" data-component-id="44d0b9e2_02_awz" class="position-relative pb-5" data-path="0">
+    <img class="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid" style="object-fit: cover;" src="https://doctorvet.it/wp-content/uploads/2020/09/quando-chiamare-il-veterinario.jpg" alt="" data-config-id="02_image" data-path="0.0">
+    <div class="position-relative" data-path="0.1">
+        <div class="container" data-path="0.1.1">
+            <div class="row pt-5" data-path="0.1.1.0">
+                <div class="col-12 col-lg-5 ms-auto" data-path="0.1.1.0.0">
+                    <div class="mb-5" data-path="0.1.1.0.0.0">
+                        <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.1.0.0.0.0">Ricoveri Attivi</h2>
+                        <p class="lead text-muted mb-5" data-config-id="desc" data-path="0.1.1.0.0.0.1">Cerca i ricoveri attivi in base alla specie del tuo animale </p>
+                        <div class="d-flex">
+                       
+                            
+                            @foreach(var ite in Model)
+                            {
+                            <button class="btn btn-outline-info filtro" value=@ite.IdTipo>@ite.Tipologia</button>
+            }
+
+                            
+                        </div>
+
+                        <div class="d-flex flex-wrap mt-3 justify-content-center" data-path="0.1.1.0.0.0.2">
+                            <button class="btn btn-primary me-2 mb-2 mb-sm-0" id="cerca">Vedi tutti i ricoveri</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="risultato" class="mt-5" style="display:none">
+    <div  class="d-flex justify-content-between" id="ca">
+    </div>
+</div>
+<p id="tot" class="text-center mt-5"></p>
+
+
+@section scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cerca").click(function () {
+                $("#risultato").slideToggle()
+                $("tot").toggleClass("d-none")
+                $("#ca").empty()
+
+                $.ajax({
+                    method: "GET",
+                    url: "Pazienti/RicoveriAttivi",
+                    success: function (d) {
+                        console.log(d)
+
+                        $.each(d, function (i, v) {
+                            var c=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${v.IdPaziente}</h5>
+            <p class="card-text">${v.Nome}</p>
+
+          </div>
+</div></a>`
+    $("#ca").append(c)
+        
+                        })
+                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
+                    }
+
+
+                })
+            })
+
+
+            $(".filtro").click(function () {
+                var val = parseInt(this.value)
+                console.log(val)
+                $("#risultato").slideToggle()
+                $("tot").toggleClass("d-none")
+                $("#ca").empty()
+                $.ajax({
+                    method: "GET",
+                    url: "Pazienti/RicoveriAttiviTipo",
+                    data: {id:val},
+                    success: function (d) {
+                        console.log(d)
+
+                        $.each(d, function (i, v) {
+                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${v.IdPaziente}</h5>
+            <p class="card-text">${v.Nome}</p>
+
+          </div>
+</div></a>`)
+                        })
+                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
+                    }
+
+
+                })
+            })
+          
+
+
+
+        })
+
+
+
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

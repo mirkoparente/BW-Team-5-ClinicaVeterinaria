@@ -3,8 +3,8 @@
         <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.0.0.0">Eccellenza nella cura degli animali domestici.</h2>
         <p class="lead text-muted mb-5" data-config-id="desc" data-path="0.1.0.0.1">Dedicati ai tuoi amici pelosi con il massimo della cura. Il nostro ospedale veterinario è qui per offrire servizi di alta qualità, affiancandoti nel benessere del tuo animale.</p>
         <div class="d-flex" data-path="0.1.0.0.2">
-            <input class="form-control me-2" type="text" placeholder="Inserisci microchip" data-path="0.1.0.0.2.0">
-            <button class="btn btn-primary" data-config-id="hero-primary-action" data-path="0.1.0.0.2.1">Cerca il tuo pelosetto</button>
+            <input class="form-control me-2" id="chipCode" type="text" placeholder="Inserisci microchip">
+            <button class="btn btn-primary" id="chipCodeButton">Cerca il tuo pelosetto</button>
         </div>
     </div>
     <div class="col-12 col-lg-6 pb-5" data-path="0.1.0.1">
@@ -75,3 +75,37 @@
         </div>
     </div>
 </section>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#chipCodeButton").click(function () {
+                var inputVal = $("#chipCode").val()
+                console.log(inputVal)
+                $.ajax({
+                    method: 'GET',
+                    url: "Home/searchAnimalbyChipCode",
+                    data: { code: inputVal },
+                    success: function (data) {
+                        console.log(data.id)
+
+                        $(window.location).attr("href", "./Pazienti/DettagliPaziente?id=" + data.id)
+                    }
+
+                })
+            })
+
+
+
+
+        })
+
+
+
+    </script>
+    
+    
+    
+    
+    }

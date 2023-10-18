@@ -11,7 +11,7 @@
 <table class="container table table-active">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Clienti.Nome)
+            Cliente
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoPaziente.Tipologia)
@@ -40,9 +40,21 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+
+
+<tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+
+            @if (item.IdClienti == null)
+            {
+
+                <p>Randagio</p>
+            }
+            else
+            {
+
+                @Html.DisplayFor(modelItem => item.Clienti.Nome) @Html.DisplayFor(modelItem => item.Clienti.Cognome)
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoPaziente.Tipologia)
@@ -66,9 +78,9 @@
             @Html.DisplayFor(modelItem => item.IsHospitalized)
         </td>
         <td>
-            <a href="EditPaziente?id=@item.IdPaziente"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
-            <a href="DettagliPaziente?id=@item.IdPaziente"><i class="fa-solid fa-circle-info"style="color: #288d8f;"></i></a>
-            <a href="Delete?id=@item.IdPaziente"><i class="fa-regular fa-trash-can"style="color: #288d8f;"></i></a>
+            <a href="Pazienti/EditPaziente?id=@item.IdPaziente"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+            <a href="Pazienti/DettagliPaziente?id=@item.IdPaziente"><i class="fa-solid fa-circle-info"style="color: #288d8f;"></i></a>
+            <a href="Pazienti/Delete?id=@item.IdPaziente"><i class="fa-regular fa-trash-can"style="color: #288d8f;"></i></a>
            
         </td>
     </tr>

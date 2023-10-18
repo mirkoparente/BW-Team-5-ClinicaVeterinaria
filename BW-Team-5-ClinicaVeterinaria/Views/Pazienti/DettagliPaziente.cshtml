@@ -14,11 +14,23 @@
 
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Clienti.Nome)
+            Cliente
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Clienti.Nome)
+            
+
+                @if (Model.IdClienti == null)
+                {
+
+                    <p>Randagio</p>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(modelItem => Model.Clienti.Nome) @Html.DisplayFor(modelItem => Model.Clienti.Cognome)
+                }
+            
         </dd>
 
         <dt>
