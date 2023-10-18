@@ -14,7 +14,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         public int IdProdotti { get; set; }
 
-        public int IdClienti { get; set; }
+        public int IdOrdini { get; set; }
 
         public int Quantita { get; set; }
 
@@ -23,7 +23,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Column(TypeName = "money")]
         public decimal? Totale { get; set; }
 
-        public virtual Clienti Clienti { get; set; }
+        public virtual Ordinis Ordini { get; set; }
 
         public virtual Prodotti Prodotti { get; set; }
     }
