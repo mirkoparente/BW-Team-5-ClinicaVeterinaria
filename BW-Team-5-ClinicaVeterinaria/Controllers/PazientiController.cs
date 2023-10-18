@@ -167,6 +167,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 pa.IdPaziente=paz.IdPaziente;
                 pa.Foto=paz.Foto;
                 pa.Nome=paz.Nome;
+                foreach(Visite v in paz.Visite)
+                {
+                    pa.DataRicovero = v.Data.Date;
+                }
 
                 pat.Add(pa);
             }
@@ -185,7 +189,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 pa.IdPaziente=paz.IdPaziente;
                 pa.Foto=paz.Foto;
                 pa.Nome=paz.Nome;
-
+                foreach (Visite v in paz.Visite)
+                {
+                    pa.DataRicovero = v.Data;
+                }
                 pat.Add(pa);
             }
 

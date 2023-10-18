@@ -9,7 +9,10 @@
     <table class="container table table-active">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cassetti.Nome)
+                Armadietto
+            </th> 
+            <th>
+                Cassetto 
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
@@ -37,6 +40,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cassetti.Armadietti.Nome)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Cassetti.Nome)
                 </td>

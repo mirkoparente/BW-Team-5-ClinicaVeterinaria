@@ -61,6 +61,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExample04">
+                <div class="d-flex justify-content-between w-100">
+
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
                         @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link " })
@@ -74,8 +76,21 @@
                     else if (User.IsInRole("Veterinario"))
                     {
                         <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Pazienti" && ViewContext.RouteData.Values["action"].ToString() == "ListaPazienti" ? "active" : "")">
-                            @Html.ActionLink("gestisci ricoveri", "ListaPazienti", "Pazienti", new { area = "" }, new { @class = "nav-link" })
+                            @Html.ActionLink("Gestisci Ricoveri", "ListaPazienti", "Pazienti", new { area = "" }, new { @class = "nav-link" })
                         </li>
+
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Clienti" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                            @Html.ActionLink("Gestisci Clienti", "Index", "Clienti", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+
+
+
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Pazienti" && ViewContext.RouteData.Values["action"].ToString() == "ListaPazienti" ? "active" : "")">
+                            @Html.ActionLink("Ricoveri Attivi", "Ricoveri", "Pazienti", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+
+
+
                     }
                     else if (User.IsInRole("Farmacista"))
                     {
@@ -85,30 +100,55 @@
                         <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Prodotti" ? "active" : "")">
                             @Html.ActionLink("Gestisci Prodotti", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })
                         </li>
-
-                    }
-                    
-                    <!-- inserire logica bottone login logout-->
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Modifica profilo ", "EditProfile", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
-                                <li>@Html.ActionLink("Logout", "Logout", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
-                            </ul>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Utenti" && ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "")">
-                            @Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Prodotti" ? "active" : "")">
+                            @Html.ActionLink("Cerca Prodotti", "CercaProdotti", "Prodotti", new { area = "" }, new { @class = "nav-link" })
                         </li>
 
                     }
-                </ul>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+
+                        <!-- inserire logica bottone login logout-->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Modifica profilo ", "EditProfile", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Utenti" && ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "")">
+                                @Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+
+                        }
+
+
+
+                        @if (User.IsInRole("Farmacista"))
+                        {
+
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Utenti" && ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "")">
+                                @Html.ActionLink("Clinica", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Utenti" && ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "")">
+                                @Html.ActionLink("Farmacia", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+                    </ul>
+                </div>
                 
             </div>
         </div>
