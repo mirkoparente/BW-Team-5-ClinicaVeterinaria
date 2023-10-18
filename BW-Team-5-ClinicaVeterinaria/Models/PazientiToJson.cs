@@ -12,6 +12,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public string Foto { get; set; }
         public string Nome { get; set; }
 
+        public DateTime DataRicovero { get; set; }
+
 
     }
 }
