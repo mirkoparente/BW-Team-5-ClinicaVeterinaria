@@ -1,13 +1,27 @@
-﻿body {
+﻿:root {
+    --mdb-primary: #51dacf;
+    --mdb-btn-bg: #51dacf;
+    --mdb-btn-color: #fff;
+    --mdb-btn-box-shadow: 0 4px 9px -4px #51dacf;
+    --mdb-btn-hover-bg: #4cb8c4;
+    --mdb-btn-hover-color: #fff;
+    --mdb-btn-focus-bg: #4cb8c4;
+    --mdb-btn-focus-color: #fff;
+    --mdb-btn-active-bg: #4cb8c4;
+    --mdb-btn-active-color: #fff;
+    --mdb-btn-box-shadow-state: 0 8px 9px -4px rgba(81, 218, 207, 0.3), 0 4px 18px 0 rgba(81, 218, 207, 0.2);
+}
+
+
+body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Altezza minima del viewport */
-   
+    min-height: 100vh; 
 }
 
 .wrapper {
-    flex: 1; /* Il wrapper si espande per riempire lo spazio rimanente */
-    padding: 20px; /* Aggiungi spazio vuoto sopra e sotto il contenuto */
+    flex: 1;
+    padding: 20px;
 }
 
 .navbar{
@@ -25,3 +39,38 @@
     width:auto
     
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #51dacf;
+    border-color: #51dacf;
+    box-shadow: 0 4px 9px -4px rgba(81, 218, 207, 0.3)
+}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #4cb8c4;
+        border-color: #4cb8c4;
+        box-shadow: 0 4px 9px -4px rgba(81, 218, 207, 0.3)
+    }
+
+    .btn-primary:focus {
+        color: #fff;
+        background-color: #4cb8c4;
+        border-color: #4cb8c4;
+        box-shadow: 0 4px 9px -4px rgba(81, 218, 207, 0.3)
+    }
+
+    .btn-primary:active {
+        color: #fff;
+        background-color: #4cb8c4;
+        border-color: #4cb8c4;
+        box-shadow: 0 4px 9px -4px rgba(81, 218, 207, 0.3)
+    }
+
+    .btn-primary:disabled {
+        color: #fff;
+        background-color: #51dacf;
+        border-color: #51dacf;
+        box-shadow: none;
+    }
