@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClientiController.cs" />
     <Compile Include="Controllers\FornitoriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Prodotti\Index.cshtml" />
     <Content Include="Views\Pazienti\Ricoveri.cshtml" />
     <Content Include="Views\Prodotti\CercaProdotti.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

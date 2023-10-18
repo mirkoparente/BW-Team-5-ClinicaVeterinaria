@@ -4,50 +4,55 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista fornitori</h2>
-<table class="table">
-    <tr>
-        <th>
-            Ragione Sociale
-        </th>
-        <th>
-            Indirizzo
-        </th>
-        <th>
-            P.Iva
-        </th>
-        <th>
-            Città
-        </th>
-        <th>
-            Recapito
-        </th>
-        <th></th>
-    </tr>
+<h2 class="text-center my-3">Lista fornitori</h2>
+<div class="table-responsive">
+    <table class="container table table-active">
+        <tr>
+            <th>
+                Ragione Sociale
+            </th>
+            <th>
+                Indirizzo
+            </th>
+            <th>
+                P.Iva
+            </th>
+            <th>
+                Città
+            </th>
+            <th>
+                Recapito
+            </th>
+            <th>
+                <a href="Fornitori/Create"><i class="fa-solid fa-plus" style="color: #288d8f;"></i></a>
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RagioneSociale)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Indirizzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Piva)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Citta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recapito)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdFornitori }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdFornitori }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdFornitori })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RagioneSociale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Indirizzo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Piva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Citta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recapito)
+                </td>
+                <td>
+                    <a href="Fornitori/Edit?id=@item.IdFornitori"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+                    <a href="Fornitori/Details?id=@item.IdFornitori"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
+                    <a href="Fornitori/Delete?id=@item.IdFornitori"><i class="fa-regular fa-trash-can" style="color: #288d8f;"></i></a>
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
