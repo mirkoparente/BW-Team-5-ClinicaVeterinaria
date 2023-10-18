@@ -19,7 +19,7 @@
                             
                             @foreach(var ite in Model)
                             {
-                            <button class="btn btn-outline-info" id=@ite.IdTipo>@ite.Tipologia</button>
+                            <button class="btn btn-outline-info filtro" value=@ite.IdTipo>@ite.Tipologia</button>
             }
 
                             
@@ -77,13 +77,16 @@
             })
 
 
-            $("#1").click(function () {
+            $(".filtro").click(function () {
+                var val = parseInt(this.value)
+                console.log(val)
                 $("#risultato").slideToggle()
                 $("tot").toggleClass("d-none")
                 $("#ca").empty()
                 $.ajax({
                     method: "GET",
                     url: "Pazienti/RicoveriAttiviTipo",
+                    data: {id:val},
                     success: function (d) {
                         console.log(d)
 
@@ -103,32 +106,7 @@
 
                 })
             })
-            $("#2").click(function () {
-                $("#risultato").slideToggle()
-                $("tot").toggleClass("d-none")
-                $.ajax({
-                    method: "GET",
-                    url: "Pazienti/RicoveriAttiviTipo",
-                    success: function (d) {
-                        console.log(d)
-
-                        $.each(d, function (i, v) {
-                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
-          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">${v.IdPaziente}</h5>
-            <p class="card-text">${v.Nome}</p>
-
-          </div>
-</div></a>`)
-                        })
-                        $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
-                    }
-
-
-                })
-            })
-
+          
 
 
 
