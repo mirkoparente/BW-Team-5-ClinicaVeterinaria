@@ -46,7 +46,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdClienti,Nome,Cognome,Telefono")] Clienti clienti)
+        public ActionResult Create([Bind(Include = "IdClienti,Nome,Cognome,Telefono,CodiceFiscale")] Clienti clienti)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdClienti,Nome,Cognome,Telefono")] Clienti clienti)
+        public ActionResult Edit([Bind(Include = "IdClienti,Nome,Cognome,Telefono,CodiceFiscale")] Clienti clienti)
         {
             if (ModelState.IsValid)
             {
