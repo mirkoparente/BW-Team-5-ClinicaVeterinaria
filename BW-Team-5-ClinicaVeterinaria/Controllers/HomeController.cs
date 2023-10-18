@@ -1,6 +1,9 @@
 ﻿using BW_Team_5_ClinicaVeterinaria.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Net;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +26,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             Paziente animale= dbModel.Paziente.FirstOrDefault(e=>e.Microchip==code);
             if (animale != null) 
             {
-               var response = new {
+                var response = new {
+                    status = true,
                id= animale.IdPaziente
                
                };
@@ -31,8 +35,14 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 return Json(response,JsonRequestBehavior.AllowGet );
             }
             else
-            { 
-                return Json("nessun animale con questo numero di chip trovato", JsonRequestBehavior.AllowGet);
+            {
+                var response = new
+                {
+                    status = false,
+                   
+
+                };
+                return Json(response, JsonRequestBehavior.AllowGet);
             }
             
         }
