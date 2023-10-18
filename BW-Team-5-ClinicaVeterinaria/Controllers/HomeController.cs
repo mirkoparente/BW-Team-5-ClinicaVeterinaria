@@ -23,7 +23,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
 
         public JsonResult searchAnimalbyChipCode(string code) 
         {
-            Paziente animale= dbModel.Paziente.FirstOrDefault(e=>e.Microchip==code);
+            Paziente animale= dbModel.Paziente.FirstOrDefault(e=>e.Microchip==code && e.IsHospitalized== true);
             if (animale != null) 
             {
                 var response = new {
