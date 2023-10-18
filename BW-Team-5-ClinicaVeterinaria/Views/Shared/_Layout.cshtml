@@ -62,27 +62,27 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample04">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link " })
                     </li>
                     @if (User.IsInRole("Admin"))
                     {
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             @Html.ActionLink("admin ", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })
                         </li>
                     }
                     else if (User.IsInRole("Veterinario"))
                     {
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Pazienti" && ViewContext.RouteData.Values["action"].ToString() == "ListaPazienti" ? "active" : "")">
                             @Html.ActionLink("gestisci ricoveri", "ListaPazienti", "Pazienti", new { area = "" }, new { @class = "nav-link" })
                         </li>
                     }
                     else if (User.IsInRole("Farmacista"))
                     {
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Fornitori" ? "active" : "")">
                             @Html.ActionLink("Gestisci Fornitori", "Index", "Fornitori", new { area = "" }, new { @class = "nav-link" })
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Prodotti" ? "active" : "")">
                             @Html.ActionLink("Gestisci Prodotti", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })
                         </li>
 
@@ -103,7 +103,7 @@
                     }
                     else
                     {
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Utenti" && ViewContext.RouteData.Values["action"].ToString() == "Login" ? "active" : "")">
                             @Html.ActionLink("Login", "Login", "Utenti", new { area = "" }, new { @class = "nav-link" })
                         </li>
 
