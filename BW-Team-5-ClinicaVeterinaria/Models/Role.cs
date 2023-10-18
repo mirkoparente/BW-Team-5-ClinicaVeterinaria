@@ -37,9 +37,25 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         public override string[] GetRolesForUser(string username)
         {
+            ContextDbModel dbContext = new ContextDbModel();
 
-            //Chiamata ruoli
-            throw new NotImplementedException();
+            try
+            {
+                var userRoles = (from u in dbContext.Utente
+                                 join r in dbContext.Ruoli on u.IdRuoli equals r.IdRuoli
+                                 where u.Email == username
+                                 select r.Ruolo).ToArray();
+
+                return userRoles;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Si è verificato un errore durante l'accesso ai ruoli dell'utente.", ex);
+            }
+            finally
+            {
+                dbContext.Dispose();
+            }
         }
 
         public override string[] GetUsersInRole(string roleName)
