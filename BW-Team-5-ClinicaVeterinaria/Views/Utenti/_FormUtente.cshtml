@@ -20,19 +20,32 @@
                     @Html.EditorFor(model => model.Cognome, new { htmlAttributes = new { @class = "form-control", @id = "Cognome" } })
                     @Html.LabelFor(model => model.Cognome, htmlAttributes: new { @class = "form-label", @for = "Cognome" })
                 </div>
-
+                @Html.ValidationMessageFor(model => model.Cognome, "", new { @class = "text-danger" })
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "Email" } })
                     @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label", @for = "Email" })
                 </div>
-
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @id = "Password", type = "password" } })
                     @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label", @for = "Password" })
                 </div>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <div class="form-outline mb-4">
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @id = "Password", type = "password" } })
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-label", @for = "Password" })
+                </div>
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                
+                @if (ViewBag.password != null)
+                {
+                <p class="text-danger">
+                    @ViewBag.password
+                </p>
 
+                }
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
 

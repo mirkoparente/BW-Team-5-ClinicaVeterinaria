@@ -72,29 +72,53 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Exclude = "IDRuoli")] Utente user)
         {
-            if (ModelState.IsValid)
+            List<Utente> Utenti = dbContext.Utente.ToList();
+            bool isNewUtente = true;
+            foreach (var item in Utenti)
             {
-                user.IdRuoli = 1;
-                dbContext.Utente.Add(user);
-                try
+                if (item.Email == user.Email) 
                 {
-                    dbContext.SaveChanges();
-                    return RedirectToAction("Login", "Utenti");
-                }
-                catch (Exception ex)
-                {
-
-                    ModelState.AddModelError("Si è verificato un errore durante la registrazione.", ex);
-                    return View(user);
-
-                }
-                finally
-                {
-                    dbContext.Dispose();
+                    isNewUtente = false;
+                    break;
+                
                 }
             }
 
-            ModelState.AddModelError("", "compila tutti i campi");
+            if (isNewUtente) 
+            { 
+            
+            if (user.Password== user.ConfirmPassword)
+            {
+                if (ModelState.IsValid)
+                {
+                    user.IdRuoli = 1;
+                    dbContext.Utente.Add(user);
+                    try
+                    {
+                        dbContext.SaveChanges();
+                        return RedirectToAction("Login", "Utenti");
+                    }
+                    catch (Exception ex)
+                    {
+
+                        ModelState.AddModelError("Si è verificato un errore durante la registrazione.", ex);
+                        return View(user);
+
+                    }
+                    finally
+                    {
+                        dbContext.Dispose();
+                    }
+                }
+            }
+
+            ViewBag.password = "le password non coincidono";
+            user.Password = null;
+            user.ConfirmPassword=null;
+            return View(user);
+            }
+
+            ViewBag.password = "utente già registrato";
             return View(user);
         }
 
