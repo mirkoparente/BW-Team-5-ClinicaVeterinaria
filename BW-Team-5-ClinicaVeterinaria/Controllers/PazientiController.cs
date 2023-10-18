@@ -172,9 +172,12 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
 
             return Json(pat, JsonRequestBehavior.AllowGet);
-        }    public JsonResult RicoveriAttiviTipo()
+        }    
+        
+        
+        public JsonResult RicoveriAttiviTipo(int id)
         {
-            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true && o.IdTipo==o.IdTipo).ToList();
+            List<Paziente> p = db.Paziente.Where(o => o.IsHospitalized == true && o.IdTipo==id).ToList();
             List<PazientiToJson> pat=new List<PazientiToJson>();
             foreach(Paziente paz in p)
             {
