@@ -91,14 +91,15 @@
                         console.log(d)
 
                         $.each(d, function (i, v) {
-                            $("#ca").html(`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+                           var cc=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
           <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">${v.IdPaziente}</h5>
             <p class="card-text">${v.Nome}</p>
 
           </div>
-</div></a>`)
+</div></a>`
+                            $("#ca").append(cc)
                         })
                         $("#tot").html(`Ricoveri Totali Attivi: ${d.length}`)
                     }
