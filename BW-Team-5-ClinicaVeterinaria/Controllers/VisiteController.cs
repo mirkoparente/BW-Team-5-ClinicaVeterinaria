@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using BW_Team_5_ClinicaVeterinaria.Models;
@@ -17,30 +19,15 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // GET: Visite
         public ActionResult Index()
         {
-            var visite = db.Visite.Include(v => v.Paziente);
-            return View(visite.ToList());
-        }
-
-        // GET: Visite/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Visite visite = db.Visite.Find(id);
-            if (visite == null)
-            {
-                return HttpNotFound();
-            }
-            return View(visite);
+            return View(db.Visite.ToList());
         }
 
         // GET: Visite/Create
         public ActionResult Create(int id)
         {
-            ViewBag.IdPaziente = new SelectList(db.Paziente, "IdPaziente", "Nome");
-            return View();
+            Visite newVisita = new Visite();
+            newVisita.IdPaziente = id;
+            return View(newVisita);
         }
 
         // POST: Visite/Create
@@ -48,13 +35,13 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdVisite,Data,IdPaziente,Descrizione,Ananmnesi")] Visite visite)
+        public ActionResult Create(Visite visite)
         {
             if (ModelState.IsValid)
             {
                 db.Visite.Add(visite);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaPazienti", "Pazienti");
             }
 
             ViewBag.IdPaziente = new SelectList(db.Paziente, "IdPaziente", "Nome", visite.IdPaziente);
@@ -88,7 +75,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             {
                 db.Entry(visite).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaPazienti", "Pazienti");
             }
             ViewBag.IdPaziente = new SelectList(db.Paziente, "IdPaziente", "Nome", visite.IdPaziente);
             return View(visite);
@@ -117,7 +104,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             Visite visite = db.Visite.Find(id);
             db.Visite.Remove(visite);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaPazienti", "Pazienti");
         }
 
         protected override void Dispose(bool disposing)
