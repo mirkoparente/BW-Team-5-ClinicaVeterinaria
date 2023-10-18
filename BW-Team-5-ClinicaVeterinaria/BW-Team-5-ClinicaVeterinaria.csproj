@@ -206,6 +206,7 @@
     <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
     <Compile Include="Models\ProdottiAcquistati.cs" />
+    <Compile Include="Models\ProdottiToJson.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Ruoli.cs" />
     <Compile Include="Models\sysdiagrams.cs" />
@@ -314,6 +315,7 @@
     <Content Include="Views\Prodotti\Edit.cshtml" />
     <Content Include="Views\Prodotti\Index.cshtml" />
     <Content Include="Views\Pazienti\Ricoveri.cshtml" />
+    <Content Include="Views\Prodotti\CercaProdotti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
