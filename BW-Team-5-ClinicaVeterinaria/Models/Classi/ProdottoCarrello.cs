@@ -30,9 +30,11 @@ namespace BW_Team_5_ClinicaVeterinaria.Models.Classi
 
         public int QuantitaAcquistata { get; set; }
 
+        public string FotoProd {  get; set; }
+
         public ProdottoCarrello() { }
 
-        public ProdottoCarrello (int idProdotti, string nome, string descrizione, int quantitaDisponibile, decimal prezzoUnitario, int idFornitori, int idCategoria, int idCassetti, int quantitaAcquistata)
+        public ProdottoCarrello (int idProdotti, string nome, string descrizione, int quantitaDisponibile, decimal prezzoUnitario, int idFornitori, int idCategoria, int idCassetti, int quantitaAcquistata, string fotoProd)
         {
             IdProdotti = idProdotti;
             Nome = nome;
@@ -43,6 +45,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models.Classi
             IdCategoria = idCategoria;
             IdCassetti = idCassetti;
             QuantitaAcquistata = quantitaAcquistata;
+            FotoProd = fotoProd;
         }
     }
 }
