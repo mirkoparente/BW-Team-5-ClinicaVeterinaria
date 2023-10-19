@@ -47,9 +47,9 @@
 
                                     <div class="d-flex">
 
-                                    <input type="checkbox" class="form-check me-2" name="randagio" id="randagio" value="" />
-                                    <p class="col-form-label">Randagio</p>
-                                    
+                                        <input type="checkbox" class="form-check me-2" name="randagio" id="randagio" value="" />
+                                        <p class="col-form-label">Randagio</p>
+
                                     </div>
 
 
@@ -70,7 +70,7 @@
 
 
 
-                                  
+
                                     <div class="d-flex flex-row align-items-center mb-4" id="clienti">
                                         <div class="form-outline flex-fill mb-0">
                                             @Html.LabelFor(model => model.IdClienti, htmlAttributes: new { @class = "form-label", @for = "IdClienti" })
@@ -90,6 +90,11 @@
                                             @Html.EditorFor(model => model.IsHospitalized, new { htmlAttributes = new { @class = "form-checkbox", @id = "IsHospitalized" } })
                                             @Html.LabelFor(model => model.IsHospitalized, htmlAttributes: new { @class = "form-label", @for = "IsHospitalized" })
                                             @Html.ValidationMessageFor(model => model.IsHospitalized, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.HiddenFor(model => model.DataRicovero, htmlAttributes: new { @class = "form-label", @for = "DataNascita" })
                                         </div>
                                     </div>
 
