@@ -1,0 +1,29 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.TipoPaziente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    <h4>Sicuro di voler cancellare questa tipologia di animale?</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipologia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipologia)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> 
+            <div class="btn-group">
+                @Html.ActionLink("Lista tipologie", "Index", new { id = Model.IdTipo }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
