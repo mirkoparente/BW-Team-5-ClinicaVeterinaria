@@ -32,8 +32,25 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return RedirectToAction("CercaProdotti", "Prodotti");
         }
 
+        public ActionResult Carrello()
+        {
+            List<Prodotti> carrello;
+            if (Session["Carrello"] != null)
+            {
+                carrello = Session["Carrello"] as List<Prodotti>;
+            }
+            else
+            {
+                carrello = new List<Prodotti> ();
+            }
+
+            ViewBag.Carrello = carrello;
+
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult AggiungiAlCarrello(List<Prodotti> carrello)
+        public ActionResult Carrello(List<Prodotti> carrello)
         {
             carrello = Session["Carrello"] as List<Prodotti>;
             return View(carrello);
