@@ -31,7 +31,8 @@
 
 
 <div id="risultato" class="mt-2 d-flex justify-content-center justify-content-lg-start" style="display:none">
-    <div id="ca">
+    <div class="row" id="ca">
+
     </div>
 </div>
 
@@ -55,7 +56,8 @@
 
                         
                         $.each(d, function (i, v) {
-                            var c = `<a href="./Prodotti/Details?id=${v.IdProdotti}" class="text-center" ><div class="card" style="width: 18rem;">
+                            var c = `<div class="col mb-3">
+                            <a href="./Prodotti/Details?id=${v.IdProdotti}" class="text-center" ><div class="card" style="width: 18rem;">
                                                  <div class="card-body">
                                <h5 class="card-title">${v.Nome}</h5>
                                <p class="card-text">${v.Descrizione}</p>
@@ -72,7 +74,7 @@
                                 </button>
 
                                 <div class="form-outline">
-                                    <input id="_quantita_${v.IdProdotti}" min="0" value="0" autofocus type="number" class="form-control" />
+                                    <input id="_quantita_${v.IdProdotti}" min="1" value="1" autofocus type="number" class="form-control" />
                                 </div>
 
                                 <button class="btn btn-primary px-3 ms-2"
@@ -83,6 +85,7 @@
                             <!-- Quantity -->
                                 <button type="button" value="${v.IdProdotti}" class="btn btn-primary my-3 addCart">Acquista</button>
                                 </div>
+                            </div>
                             </div> `
 
                             $("#ca").append(c)

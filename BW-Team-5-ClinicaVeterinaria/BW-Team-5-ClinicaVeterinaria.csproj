@@ -200,6 +200,10 @@
     <Compile Include="Migrations\202310190734261_DataRicovero.designer.cs">
       <DependentUpon>202310190734261_DataRicovero.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310191306278_FotoProdotto.cs" />
+    <Compile Include="Migrations\202310191306278_FotoProdotto.designer.cs">
+      <DependentUpon>202310191306278_FotoProdotto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -430,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310190734261_DataRicovero.resx">
       <DependentUpon>202310190734261_DataRicovero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191306278_FotoProdotto.resx">
+      <DependentUpon>202310191306278_FotoProdotto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

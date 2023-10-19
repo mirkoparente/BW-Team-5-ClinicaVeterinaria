@@ -106,6 +106,9 @@
                             <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Prodotti" ? "active" : "")">
                                 @Html.ActionLink("Cerca Prodotti", "CercaProdotti", "Prodotti", new { area = "" }, new { @class = "nav-link" })
                             </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Prodotti" ? "active" : "")">
+                                @Html.ActionLink("Carrello", "Carrello", "Ordini", new { area = "" }, new { @class = "nav-link" })
+                            </li>
 
                         }
                     </ul>
