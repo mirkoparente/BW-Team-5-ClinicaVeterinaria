@@ -1,0 +1,23 @@
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.TipoPaziente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>Dettagli paziente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipologia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipologia)
+        </dd>
+
+    </dl>
+</div>
+<div class="btn-group">
+    @Html.ActionLink("Lista tipologie", "Index", new { id = Model.IdTipo }, new { @class = "btn btn-primary" })
+</div>

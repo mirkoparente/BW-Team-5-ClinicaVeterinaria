@@ -170,6 +170,7 @@
     <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
+    <Compile Include="Controllers\TipoPazienteController.cs" />
     <Compile Include="Controllers\UtentiController.cs" />
     <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -328,6 +329,11 @@
     <Content Include="Views\Ordini\Details.cshtml" />
     <Content Include="Views\Ordini\Edit.cshtml" />
     <Content Include="Views\Ordini\Index.cshtml" />
+    <Content Include="Views\TipoPaziente\Create.cshtml" />
+    <Content Include="Views\TipoPaziente\Delete.cshtml" />
+    <Content Include="Views\TipoPaziente\Details.cshtml" />
+    <Content Include="Views\TipoPaziente\Edit.cshtml" />
+    <Content Include="Views\TipoPaziente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

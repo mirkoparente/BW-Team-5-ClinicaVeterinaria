@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.TipoPaziente>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="text-center my-3">Lista delle Tipologie di Animali</h2>
+<div class="table-responsive">
+    <table class="container table table-active">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipologia)
+            </th>
+            <th>
+                <a href="TipoPaziente/Create"><i class="fa-solid fa-plus" style="color: #288d8f;"></i></a>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipologia)
+                </td>
+                <td>
+                    <a href="TipoPaziente/Edit?id=@item.IdTipo"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+                    <a href="TipoPaziente/Details?id=@item.IdTipo"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
+                    <a href="TipoPaziente/Delete?id=@item.IdTipo"><i class="fa-regular fa-trash-can" style="color: #288d8f;"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
