@@ -1,4 +1,4 @@
-﻿@model BW_Team_5_ClinicaVeterinaria.Models.Ordinis
+﻿@model BW_Team_5_ClinicaVeterinaria.Models.Ordini
 
 @{
     ViewBag.Title = "Carrello";
@@ -6,36 +6,11 @@
 
 <h2>Carrello</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataOrdine, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataOrdine, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataOrdine, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TotaleOrdine, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TotaleOrdine, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TotaleOrdine, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -73,7 +48,7 @@
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                                 <button class="btn btn-link px-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()" data-product-id=@item.IdProdotti >
                                                     <i class="fas fa-minus"></i>
                                                 </button>
 
@@ -81,7 +56,7 @@
                                                        class="form-control form-control-sm qButton" data-product-id=@item.IdProdotti />
 
                                                 <button class="btn btn-link px-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()" data-product-id=@item.IdProdotti >
                                                     <i class="fas fa-plus"></i>
                                                 </button>
                                             </div>
@@ -123,24 +98,22 @@
                                         <h6 class="mb-0 text-muted">@ViewBag.Carrello.Count</h6>
 
                                     </div>
-
-                                    <h5 class="text-uppercase mb-3">Shipping</h5>
-
-                                    <div class="mb-4 pb-2">
-                                        <select class="select">
-                                            <option value="1">Standard-Delivery- €5.00</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                            <option value="4">Four</option>
-                                        </select>
-                                    </div>
-
-                                    <h5 class="text-uppercase mb-3">Give code</h5>
+                                    <h5 class="text-uppercase mb-3">Codice Fiscale</h5>
 
                                     <div class="mb-5">
                                         <div class="form-outline">
-                                            <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                            <input type="text" id="CF" class="form-control form-control-lg" />
+                                            <label class="form-label" for="form3Examplea2">Codice Fiscale</label>
+                                        </div>
+                                    </div>
+
+
+                                    <h5 class="text-uppercase mb-3">Ricetta</h5>
+
+                                    <div class="mb-5">
+                                        <div class="form-outline">
+                                            <input type="text" id="numeroRicetta" class="form-control form-control-lg" />
+                                            <label class="form-label" for="form3Examplea2">Numero ricetta</label>
                                         </div>
                                     </div>
 
@@ -150,11 +123,12 @@
                                         <h5 class="text-uppercase">Total price</h5>
                                         <h5>@ViewBag.Carrello.Count</h5>
                                     </div>
-
-                                    <button type="button" class="btn btn-primary"
-                                            data-mdb-ripple-color="dark">
-                                        Register
-                                    </button>
+                                   
+                                        <button type="button" class="btn btn-primary" id="checkout"
+                                                data-mdb-ripple-color="dark">
+                                            Register
+                                        </button>
+                                    
 
                                 </div>
                             </div>
@@ -169,7 +143,7 @@
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
+<script>
         $(document).ready(function () {
             $(".qButton").change(function () {
                 var idProdotto = $(this).data('product-id');
@@ -184,19 +158,51 @@
                         console.log(data)
                         if (data.length > 0 ) {
                             $(window.location).attr("href", "./Ordini/Carrello")
-
                         }
                     }
+                 })
+              })
+                $(".btn-link").click(function () {
+                var idProdotto = $(this).data('product-id');
+                console.log(idProdotto)
+                var q = $(`#quantita_${idProdotto}`).val()
+                console.log(q)
+                $.ajax({
+                    method: 'GET',
+                    url: "Ordini/editPrdCarello",
+                    data: { id: idProdotto, quantita: q },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.length > 0 ) {
+                            $(window.location).attr("href", "./Ordini/Carrello")
+                        }
+                    }
+                 })
+              })
+            $("#checkout").click(function () {
+                var CF = $("#CF").val()
+                console.log(CF)
+                var nRicetta = $("#numeroRicetta").val()
+                console.log(nRicetta)
+                $.ajax({
+                    method: 'POST',
+                    url: "Ordini/Checkout",
+                    data: { cf: CF, ricetta: nRicetta },
+                    success: function (data) {
+                        console.log(data)
+                        
+                    }
+                })
 
 
             })
 
-                 })
+
         })
-        
 
 
-    </script>
+
+</script>
 
 
 

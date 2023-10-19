@@ -12,7 +12,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clienti()
         {
-            Ordini = new HashSet<Ordinis>();
+            Ordini = new HashSet<Ordini>();
             Paziente = new HashSet<Paziente>();
         }
 
@@ -36,7 +36,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public string CodiceFiscale {  get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ordinis> Ordini { get; set; }
+        public virtual ICollection<Ordini> Ordini { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paziente> Paziente { get; set; }

@@ -23,7 +23,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Column(TypeName = "money")]
         public decimal? Totale { get; set; }
 
-        public virtual Ordinis Ordini { get; set; }
+        public virtual Ordini Ordini { get; set; }
 
         public virtual Prodotti Prodotti { get; set; }
     }

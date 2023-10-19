@@ -68,10 +68,25 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Carrello(List<Prodotti> carrello)
+        
+        public ActionResult Checkout(string cf, string ricetta)
         {
-            carrello = Session["Carrello"] as List<Prodotti>;
+            Ordini ordine = new Ordini();
+            ordine.DataOrdine=DateTime.Now;
+            Clienti Cli = db.Clienti.FirstOrDefault(e=>e.CodiceFiscale==cf);
+            ordine.IdClienti= Cli.IdClienti;
+
+            decimal Totale = 0;
+            List<ProdottoCarrello> carrello = Session["Carrello"] as List<ProdottoCarrello>;
+            foreach (var e in carrello)
+            {
+                Totale += (e.QuantitaAcquistata * e.PrezzoUnitario);
+            }
+            ordine.TotaleOrdine = Totale;
+
+            db.Ordini.Add(ordine);
+            db.SaveChanges();
+
             return View(carrello);
         }
 

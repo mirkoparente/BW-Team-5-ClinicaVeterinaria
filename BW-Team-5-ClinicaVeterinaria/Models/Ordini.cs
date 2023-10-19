@@ -7,7 +7,8 @@ using System.Web;
 
 namespace BW_Team_5_ClinicaVeterinaria.Models
 {
-    public class Ordinis
+    [Table("Ordini")]
+    public class Ordini
     {
         [Key]
         public int IdOrdini { get; set; }

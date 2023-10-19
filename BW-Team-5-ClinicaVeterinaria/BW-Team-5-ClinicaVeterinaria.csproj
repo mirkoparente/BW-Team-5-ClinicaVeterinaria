@@ -204,6 +204,14 @@
     <Compile Include="Migrations\202310191306278_FotoProdotto.designer.cs">
       <DependentUpon>202310191306278_FotoProdotto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310191505018_Ordinis_fix.cs" />
+    <Compile Include="Migrations\202310191505018_Ordinis_fix.designer.cs">
+      <DependentUpon>202310191505018_Ordinis_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310191510221_changeNameOrdinis.cs" />
+    <Compile Include="Migrations\202310191510221_changeNameOrdinis.designer.cs">
+      <DependentUpon>202310191510221_changeNameOrdinis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -213,7 +221,7 @@
     <Compile Include="Models\Clienti.cs" />
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />
-    <Compile Include="Models\Ordinis.cs" />
+    <Compile Include="Models\Ordini.cs" />
     <Compile Include="Models\Paziente.cs" />
     <Compile Include="Models\PazientiToJson.cs" />
     <Compile Include="Models\Prodotti.cs" />
@@ -247,6 +255,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Css\login.css" />
     <Content Include="Content\Css\_layoutpage.css" />
+    <Content Include="Content\Img\cane marrone.jpg" />
+    <Content Include="Content\Img\GattoGrigio.jpg" />
+    <Content Include="Content\Img\MongePremium.jpg" />
     <Content Include="Content\Img\pexels-sam-lion-5733422.jpg" />
     <Content Include="Content\Img\pexels-sam-lion-5733423.jpg" />
     <Content Include="favicon.ico" />
@@ -329,10 +340,6 @@
     <Content Include="Views\Pazienti\Ricoveri.cshtml" />
     <Content Include="Views\Prodotti\CercaProdotti.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Ordini\Create.cshtml" />
-    <Content Include="Views\Ordini\Delete.cshtml" />
-    <Content Include="Views\Ordini\Details.cshtml" />
-    <Content Include="Views\Ordini\Edit.cshtml" />
     <Content Include="Views\Ordini\Index.cshtml" />
     <Content Include="Views\Ordini\Carrello.cshtml" />
     <Content Include="Views\TipoPaziente\Create.cshtml" />
@@ -437,6 +444,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310191306278_FotoProdotto.resx">
       <DependentUpon>202310191306278_FotoProdotto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191505018_Ordinis_fix.resx">
+      <DependentUpon>202310191505018_Ordinis_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191510221_changeNameOrdinis.resx">
+      <DependentUpon>202310191510221_changeNameOrdinis.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
