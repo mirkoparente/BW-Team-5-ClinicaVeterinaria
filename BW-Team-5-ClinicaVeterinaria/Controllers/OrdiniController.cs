@@ -68,10 +68,10 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Carrello(List<Prodotti> carrello)
+        
+        public ActionResult Checkout(string cf, string ricetta)
         {
-            carrello = Session["Carrello"] as List<Prodotti>;
+           List<ProdottoCarrello> carrello = Session["Carrello"] as List<ProdottoCarrello>;
             return View(carrello);
         }
 
