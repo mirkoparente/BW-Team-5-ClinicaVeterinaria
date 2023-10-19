@@ -15,6 +15,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models.Classi
         public string Password { get; set; }
 
         [Required]
+        [Display(Name ="Remember me")]
         public bool RememberMe { get; set; }
     }
 }
