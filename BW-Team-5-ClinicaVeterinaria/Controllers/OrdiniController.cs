@@ -5,43 +5,61 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using BW_Team_5_ClinicaVeterinaria.Models;
-
+using BW_Team_5_ClinicaVeterinaria.Models.Classi;
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
     public class OrdiniController : Controller
     {
         private ContextDbModel db = new ContextDbModel();
 
-        public ActionResult AggiungiAlCarrello(int id)
+        public ActionResult AggiungiAlCarrello(int id, int quantita)
         {
-            Prodotti prodottoSelezionato = db.Prodotti.Find(id);
-            if (Session["Carrello"]==null)
+            Prodotti p = db.Prodotti.Find(id);
+            ProdottoCarrello prdCar= new ProdottoCarrello(
+                p.IdProdotti,
+                p.Nome,
+                p.Descrizione,
+                p.QuantitaDisponibile,
+                p.PrezzoUnitario,
+                p.IdFornitori,
+                p.IdCategoria,
+                p.IdCassetti,
+                quantita);
+
+            if (Session["Carrello"] == null)
             {
-                List<Prodotti> carrello = new List<Prodotti>();
-                carrello.Add(prodottoSelezionato);
-                Session["Carrello"]=carrello;
+                List<ProdottoCarrello> carrello = new List<ProdottoCarrello>();
+                carrello.Add(prdCar);
+                Session["Carrello"] = carrello;
             }
             else
             {
-                List<Prodotti> carrello = Session["Carrello"] as List<Prodotti>;
-                carrello.Add(prodottoSelezionato);
-                Session["Carrello"]= carrello;
+                List<ProdottoCarrello> carrello = Session["Carrello"] as List<ProdottoCarrello>;
+                carrello.Add(prdCar);
+                Session["Carrello"] = carrello;
             }
-            return RedirectToAction("CercaProdotti", "Prodotti");
+
+            var response = new
+            {
+                Status = true,
+            };
+
+            return Json (response, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Carrello()
         {
-            List<Prodotti> carrello;
+            List<ProdottoCarrello> carrello;
             if (Session["Carrello"] != null)
             {
-                carrello = Session["Carrello"] as List<Prodotti>;
+                carrello = Session["Carrello"] as List<ProdottoCarrello>;
             }
             else
             {
-                carrello = new List<Prodotti> ();
+                carrello = new List<ProdottoCarrello> ();
             }
 
             ViewBag.Carrello = carrello;

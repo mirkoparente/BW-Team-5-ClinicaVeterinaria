@@ -204,6 +204,7 @@
     <Compile Include="Models\Cassetti.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Classi\Auth.cs" />
+    <Compile Include="Models\Classi\ProdottoCarrello.cs" />
     <Compile Include="Models\Clienti.cs" />
     <Compile Include="Models\ContextDbModel.cs" />
     <Compile Include="Models\Fornitori.cs" />

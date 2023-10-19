@@ -53,44 +53,71 @@
                     success: function (d) {
                         console.log(d)
 
+                        
                         $.each(d, function (i, v) {
                             var c = `<a href="./Prodotti/Details?id=${v.IdProdotti}" ><div class="card" style="width: 18rem;">
+                                     <div class="card-body">
+                                     <h5 class="card-title">${v.Nome}</h5>
+                                     <div class="card-body">
+                                     <h5 class="card-title">${v.Nome}</h5>
 
-              <div class="card-body">
-                <h5 class="card-title">${v.Nome}</h5>
+                                          </div>
+                                </a>
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                <!-- Quantity -->
+                            <div class="d-flex" style="max-width: 200px">
+                                <button class="btn btn-primary px-3 me-2"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <i class="fas fa-minus"></i>
+                                </button>
 
-                  <div class="card-body">
-                    <h5 class="card-title">${v.Nome}</h5>
+                                <div class="form-outline">
+                                    <input id="_quantita_${v.IdProdotti}" min="0" value="0" autofocus type="number" class="form-control" />
+                                </div>
 
-              </div>
-    </a>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-    <!-- Quantity -->
-<div class="d-flex" style="max-width: 200px">
-    <button class="btn btn-primary px-3 me-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-        <i class="fas fa-minus"></i>
-    </button>
-
-    <div class="form-outline">
-        <input id="_quantita_${v.IdProdotti}" min="0" value="0" autofocus type="number" class="form-control" />
-    </div>
-
-    <button class="btn btn-primary px-3 ms-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-        <i class="fas fa-plus"></i>
-    </button>
-</div>
-<!-- Quantity -->
-    <a href="./Ordini/AggiungiAlCarrello?id=${v.IdProdotti}" class="btn btn-primary my-3">Acquista</a>
-    </div>
-</div>
-
-    `
+                                <button class="btn btn-primary px-3 ms-2"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <!-- Quantity -->
+                                <button type="button" value="${v.IdProdotti}" class="btn btn-primary my-3 addCart">Acquista</button>
+                                </div>
+                            </div> `
 
                             $("#ca").append(c)
 
+                            
+
+
+
+
+
                         })
+                        $('.addCart').click(function () {
+                            var idPrd= parseInt(this.value)
+                            console.log(idPrd)
+                            var q = $(`#_quantita_${idPrd}`).val()
+                            console.log(q)
+                            $.ajax({
+                                method: 'GET',
+                                url: "Ordini/AggiungiAlCarrello",
+                                data: { id: idPrd, quantita: q },
+                                success: function (data) {
+                                    console.log(data)
+                                    if (data.Status == true)
+                                    {
+                                        $(window.location).attr("href", "./Ordini/Carrello")    
+
+                                    }
+                                }
+                            })
+
+
+
+                        })
+
+
                     }
 
 
