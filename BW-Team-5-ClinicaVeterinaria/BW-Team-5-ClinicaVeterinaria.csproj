@@ -247,6 +247,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Css\login.css" />
     <Content Include="Content\Css\_layoutpage.css" />
+    <Content Include="Content\Img\cane marrone.jpg" />
+    <Content Include="Content\Img\GattoGrigio.jpg" />
+    <Content Include="Content\Img\MongePremium.jpg" />
     <Content Include="Content\Img\pexels-sam-lion-5733422.jpg" />
     <Content Include="Content\Img\pexels-sam-lion-5733423.jpg" />
     <Content Include="favicon.ico" />
