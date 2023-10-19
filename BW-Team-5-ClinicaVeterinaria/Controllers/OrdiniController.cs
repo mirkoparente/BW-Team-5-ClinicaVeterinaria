@@ -27,7 +27,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 p.IdFornitori,
                 p.IdCategoria,
                 p.IdCassetti,
-                quantita);
+                quantita,
+                p.FotoProdotto);
 
             if (Session["Carrello"] == null)
             {
