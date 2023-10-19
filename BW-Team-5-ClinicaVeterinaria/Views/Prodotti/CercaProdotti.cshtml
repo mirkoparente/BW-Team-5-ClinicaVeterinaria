@@ -12,9 +12,9 @@
             <div class="row pt-5" data-path="0.1.1.0">
                 <div class="col-12 col-lg-5 w-100" data-path="0.1.1.0.0">
                     <div class="mb-5" data-path="0.1.1.0.0.0">
-                        <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.1.0.0.0.0">Cerca Prodotti</h2>
+                        <h2 class="display-4 fw-bold mb-5 text-center" data-config-id="header" data-path="0.1.1.0.0.0.0">Cerca Prodotti</h2>
                         <div class="d-flex">
-                            <input type="text" name="Nome" value="" id="prodotto" class="form-control" placeholder="Nome Prodotto" />
+                            <input type="text" name="Nome" value="" id="prodotto" class="form-control" autofocus placeholder="Nome Prodotto" />
                         </div>
 
                         <div class="d-flex flex-wrap mt-3 justify-content-center" data-path="0.1.1.0.0.0.2">
@@ -30,7 +30,7 @@
 </section>
 
 
-<div id="risultato" class="mt-2 d-flex justify-content-start" style="display:none">
+<div id="risultato" class="mt-2 d-flex justify-content-center justify-content-lg-start" style="display:none">
     <div id="ca">
     </div>
 </div>
@@ -55,13 +55,13 @@
 
                         
                         $.each(d, function (i, v) {
-                            var c = `<a href="./Prodotti/Details?id=${v.IdProdotti}" ><div class="card" style="width: 18rem;">
-                                     <div class="card-body">
-                                     <h5 class="card-title">${v.Nome}</h5>
-                                     <div class="card-body">
-                                     <h5 class="card-title">${v.Nome}</h5>
-
-                                          </div>
+                            var c = `<a href="./Prodotti/Details?id=${v.IdProdotti}" class="text-center" ><div class="card" style="width: 18rem;">
+                                                 <div class="card-body">
+               <h5 class="card-title">${v.Nome}</h5>
+               <p class="card-text">${v.Descrizione}</p>
+               <p class="card-text">Armadietto: ${v.NomeArmadietto}</p>
+                <p class="card-text mb-3">Cassetto: ${v.NomeCassetto}</p>
+<div>
                                 </a>
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                 <!-- Quantity -->
