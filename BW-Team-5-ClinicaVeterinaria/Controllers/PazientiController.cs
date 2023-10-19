@@ -35,6 +35,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
+        public ActionResult DettaglioPazienteIndex(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Paziente paziente = db.Paziente.Find(id);
+            if (paziente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(paziente);
+        }
+
         public ActionResult AddPaziente()
         {
             ViewBag.IdClienti = new SelectList(db.Clienti, "IdClienti", "Nome");

@@ -12,15 +12,20 @@
             <div class="row pt-5" data-path="0.1.1.0">
                 <div class="col-12 col-lg-5 ms-auto" data-path="0.1.1.0.0">
                     <div class="mb-5" data-path="0.1.1.0.0.0">
-                        <h2 class="display-4 fw-bold mb-5" data-config-id="header" data-path="0.1.1.0.0.0.0">Ricoveri Attivi</h2>
-                        <p class="lead text-muted mb-5" data-config-id="desc" data-path="0.1.1.0.0.0.1">Cerca i ricoveri attivi in base alla specie del tuo animale </p>
+                        <h2 class="display-4 fw-bold mb-5 text-center" data-config-id="header" data-path="0.1.1.0.0.0.0">Ricoveri Attivi</h2>
+                        <p class="lead text-muted mb-5 text-center" data-config-id="desc" data-path="0.1.1.0.0.0.1">Cerca i ricoveri attivi in base alla specie del tuo animale </p>
                         <div class="d-flex">
                        
                             
+                                <div class="row">
                             @foreach(var ite in Model)
                             {
-                            <button class="btn btn-outline-info filtro" value=@ite.IdTipo>@ite.Tipologia</button>
+                                <div class="col-6 mb-2">
+
+                            <button class="btn btn-outline-info w-100 filtro" value=@ite.IdTipo>@ite.Tipologia</button>
+                                </div>
             }
+                                </div>
 
                             
                         </div>
@@ -36,7 +41,10 @@
     </div>
 </section>
 <div id="risultato" class="mt-5" style="display:none">
-    <div  class="d-flex justify-content-between" id="ca">
+    <div  class="row row-cols-md-2" id="ca">
+        
+
+        
     </div>
 </div>
 <p id="tot" class="text-center mt-5"></p>
@@ -59,7 +67,9 @@
 
                         $.each(d, function (i, v) {
                             
-                            var c=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
+                            var c = `<div class="col" >
+                            <a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" >
+                            <div class="card" style="width: 18rem;">
           <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Nome: ${v.Nome}</h5>
@@ -67,7 +77,7 @@
             <p class="card-text">${v.DataRicovero}</p>
 
           </div>
-</div></a>`
+</div></a></div>`
     $("#ca").append(c)
         
                         })

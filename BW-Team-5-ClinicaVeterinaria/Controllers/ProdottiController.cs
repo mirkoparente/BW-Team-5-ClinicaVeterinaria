@@ -144,7 +144,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         
         public JsonResult Cerca(string Nome)
         {
-            List<Prodotti> p = db.Prodotti.Where(n=>n.Nome==Nome).ToList();
+            List<Prodotti> p = db.Prodotti.Where(n=>n.Nome.Contains(Nome)).ToList();
             List<ProdottiToJson> pro = new List<ProdottiToJson>();
 
             foreach(Prodotti pitem in p)
