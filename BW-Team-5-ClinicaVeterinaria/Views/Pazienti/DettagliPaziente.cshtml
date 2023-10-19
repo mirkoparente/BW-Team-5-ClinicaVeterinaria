@@ -87,52 +87,66 @@
 
         <dd>
             @Html.DisplayFor(model => model.IsHospitalized)
+        </dd> 
+        
+        @if (Model.IsHospitalized == true)
+            {
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataRicovero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataRicovero)
         </dd>
+            }
+
 
     </dl>
 </div>
     </div>
     <div class="col">
-        
-    @if (Model.Visite.Count==0 )
-                {
-                    <p class="mt-2">Non ci sono visite</p>
-                }
-        @foreach (var item in Model.Visite)
+
+        @if (Model.Visite.Count == 0)
         {
-            <div class="table-responsive">
-                <div class="table table-active">
-                    <table>
-                        <tr>
-                            <th>Descrizione</th>
-                            <th>Anamnesi</th>
-                            <th>Data visita</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                @item.Descrizione
-
-                            </td>
-                            <td>
-                                @item.Ananmnesi
-
-                            </td> 
-                            <td>
-                                @item.Data
-                            </td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            @Html.ActionLink("Modifica visita", "Edit", "Visite", new { id = item.IdVisite }, new { @class = "btn btn-outline-info" })
-            @Html.ActionLink("Cancella visita", "Delete", "Visite", new { id = item.IdVisite }, new { @class = "btn btn-outline-info" })
-
+            <p class="mt-2">Non ci sono visite</p>
         }
-    </div>
+            @foreach (var item in Model.Visite)
+            {
+                <div class="table-responsive">
+                    <div class="table table-active">
+                        <table>
+                            <tr>
+                                <th>Descrizione</th>
+                                <th>Anamnesi</th>
+                                <th>Data visita</th>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    @item.Descrizione
+
+                                </td>
+                                <td>
+                                    @item.Ananmnesi
+
+                                </td>
+                                <td>
+                                    @item.Data
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                @Html.ActionLink("Modifica visita", "Edit", "Visite", new { id = item.IdVisite }, new { @class = "btn btn-outline-info" })
+                @Html.ActionLink("Cancella visita", "Delete", "Visite", new { id = item.IdVisite }, new { @class = "btn btn-outline-info" })
+
+            }
+        </div>
     </div>
 <p>
-    @Html.ActionLink("Nuova visita", "Create", "Visite", new { id = Model.IdPaziente }, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Nuova visita", "Create", "Visite", new { id = Model.IdPaziente }, new { @class = "btn btn-outline-primary btn-lg" })
     @Html.ActionLink("Torna alla Gestione", "ListaPazienti", new { @class = "btn btn-outline-info" })
 </p>

@@ -58,12 +58,13 @@
                         console.log(d)
 
                         $.each(d, function (i, v) {
-                            var data = new Date(v.DataRicovero)
+                            
                             var c=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
           <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">${v.Nome}</h5>
-            <p class="card-text">${data}</p>
+            <h5 class="card-title">Nome: ${v.Nome}</h5>
+            <p class="card-text"> in Ricovero dal:</p>
+            <p class="card-text">${v.DataRicovero}</p>
 
           </div>
 </div></a>`
@@ -95,11 +96,11 @@
                            var cc=`<a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" ><div class="card" style="width: 18rem;">
           <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">${v.Nome}</h5>
-            
-             <p class="card-text">${v.DataRicovero}</p>
+   <h5 class="card-title">Nome: ${v.Nome}</h5>
+   <p class="card-text"> in Ricovero dal:</p>
+   <p class="card-text"> ${v.DataRicovero}</p>
 
-          </div>
+ </div>
 </div></a>`
                             $("#ca").append(cc)
                         })
