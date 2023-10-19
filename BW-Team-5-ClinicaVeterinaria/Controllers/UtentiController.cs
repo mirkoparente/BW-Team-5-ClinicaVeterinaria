@@ -46,20 +46,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Credenziali non valide");
+                        ViewBag.Error="Credenziali non valide";
                         return View(u);
                     }
                 }
                 else 
                 {
-
+                    ViewBag.Error = "tutti i campi sono obbligatori";
                     return View(u);
                 }
 
             }
             else
             {
-                ViewBag.Error("Compila tutti i campi");
+                ViewBag.Error="Compila tutti i campi";
                 return View(u);
 
             }
@@ -108,7 +108,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     catch (Exception ex)
                     {
 
-                        ViewBag.Password("Si è verificato un errore durante la registrazione.");
+                        ViewBag.Password="Si è verificato un errore durante la registrazione.";
                         return View(user);
 
                     }
@@ -169,7 +169,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                         }
                         catch (Exception ex)
                         {
-                            ViewBag.Password("Errore di comuncazione col server");
+                            ViewBag.Password="Errore di comuncazione col server";
                             return View(user);
                         }
                         finally { dbContext.Dispose(); }

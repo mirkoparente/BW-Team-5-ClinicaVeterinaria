@@ -18,6 +18,11 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
+                        if (ViewBag.Error!=null) 
+                        { 
+                            <p class="text-danger"> @ViewBag.Error </p>
+                        
+                        }
                         <div>
                             <!-- Email input -->
                             <div class="form-outline mb-4">
