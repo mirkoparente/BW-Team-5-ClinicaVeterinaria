@@ -81,40 +81,5 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             ViewBag.IdPaziente = new SelectList(db.Paziente, "IdPaziente", "Nome", visite.IdPaziente);
             return View(visite);
         }
-
-        // GET: Visite/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Visite visite = db.Visite.Find(id);
-            if (visite == null)
-            {
-                return HttpNotFound();
-            }
-            return View(visite);
-        }
-
-        // POST: Visite/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Visite visite = db.Visite.Find(id);
-            db.Visite.Remove(visite);
-            db.SaveChanges();
-            return RedirectToAction("ListaPazienti", "Pazienti");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
