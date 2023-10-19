@@ -88,40 +88,6 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
             return View(clienti);
         }
-
-        // GET: Clientis/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clienti clienti = db.Clienti.Find(id);
-            if (clienti == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clienti);
-        }
-
-        // POST: Clientis/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Clienti clienti = db.Clienti.Find(id);
-            db.Clienti.Remove(clienti);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }
