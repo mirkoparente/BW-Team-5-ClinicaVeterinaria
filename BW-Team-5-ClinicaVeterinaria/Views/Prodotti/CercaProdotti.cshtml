@@ -54,7 +54,7 @@
 
                         $.each(d, function (i, v) {
                             var c = `<a href="./Prodotti/Details?id=${v.IdProdotti}" ><div class="card" style="width: 18rem;">
-             
+
               <div class="card-body">
                 <h5 class="card-title">${v.Nome}</h5>
 
@@ -63,13 +63,31 @@
                 <p class="card-text">Cassetto: ${v.NomeCassetto}</p>
 
               </div>
-    <div class="d-flex justify-content-center">
+    </a>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <!-- Quantity -->
+<div class="d-flex" style="max-width: 200px">
+    <button class="btn btn-primary px-3 me-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+        <i class="fas fa-minus"></i>
+    </button>
+
+    <div class="form-outline">
+        <input id="_quantita_${v.IdProdotti}" min="0" value="0" autofocus type="number" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary px-3 ms-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
+<!-- Quantity -->
     <a href="./Ordini/AggiungiAlCarrello?id=${v.IdProdotti}" class="btn btn-primary my-3">Acquista</a>
     </div>
 </div>
-    
-    </a>`
-    
+
+    `
+
                             $("#ca").append(c)
 
                         })
