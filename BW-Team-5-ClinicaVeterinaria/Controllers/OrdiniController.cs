@@ -73,6 +73,29 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             carrello = Session["Carrello"] as List<Prodotti>;
             return View(carrello);
         }
+
+
+        public ActionResult editPrdCarello (int id, int quantita)
+        {
+            List<ProdottoCarrello> carrello = Session["Carrello"] as List<ProdottoCarrello>;
+            foreach (var i in carrello)
+            {
+                if(id == i.IdProdotti) 
+                {
+                    i.QuantitaAcquistata = quantita;
+                                  
+                }
+                
+            }
+            Session["Carrello"]=carrello;
+
+
+            return Json(carrello, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+
     }
 }
 
