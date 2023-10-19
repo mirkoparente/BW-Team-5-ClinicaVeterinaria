@@ -6,6 +6,7 @@
             <input class="form-control me-2" id="chipCode" type="text" placeholder="Inserisci microchip">
             <button class="btn btn-primary" id="chipCodeButton">Cerca il tuo pelosetto</button>
         </div>
+            <div id="response"></div>
     </div>
     <div class="col-12 col-lg-6 pb-5" data-path="0.1.0.1">
         <img class="mx-auto img-fluid rounded" src="https://www.conad.it/assets/images/consigli/animali%20dal%20veterinario.jpg?_u=14e54299ccb804a561fe13fffba06c0ced41f4f4" alt="" data-config-id="03_image" data-path="0.1.0.1.0">
@@ -91,9 +92,15 @@
                     data: { code: inputVal },
                     success: function (data) {
                         console.log(data)
-                        if (data.status == true)
+                        if (data.status == true) {
+                            $(window.location).attr("href", "./Pazienti/DettagliPaziente?id=" + data.id)
+
+                        }
+                        else
                         {
-                        $(window.location).attr("href", "./Pazienti/DettagliPaziente?id=" + data.id)
+                            var newP = `<p class="text-danger"> nessun paziente attualmente ricoverato con questo chip code</p>`
+                            $('#response').append(newP)
+                            console.log($('#response'))
 
                         }
                     }
