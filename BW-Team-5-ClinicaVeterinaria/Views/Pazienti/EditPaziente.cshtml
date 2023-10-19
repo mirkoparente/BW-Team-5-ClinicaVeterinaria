@@ -97,7 +97,11 @@
                                             @Html.ValidationMessageFor(model => model.IsHospitalized, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            @Html.HiddenFor(model => model.DataRicovero, htmlAttributes: new { @class = "form-label", @for = "DataNascita" })
+                                        </div>
+                                    </div>
 
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

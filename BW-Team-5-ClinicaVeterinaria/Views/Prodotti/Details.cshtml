@@ -4,71 +4,93 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Prodotti</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cassetti.Nome)
-        </dt>
+    <h4 class="text-center my-3">Dettaglio prodotti</h4>
+    <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col">
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Armadietto
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cassetti.Nome)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Cassetti.Armadietti.Nome)
+                </dd>
+                <dt>
+                    Cassetto
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cassetti.Nome)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.Tiplogia)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Categoria.Tiplogia)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Categoria.Tiplogia)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fornitori.RagioneSociale)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Fornitori.RagioneSociale)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descrizione)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descrizione)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descrizione)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantitaDisponibile)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descrizione)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuantitaDisponibile)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuantitaDisponibile)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrezzoUnitario)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.QuantitaDisponibile)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PrezzoUnitario)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrezzoUnitario)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.PrezzoUnitario)
+                </dd>
+
+            </dl>
+        </div>
+        @if (Model.Categoria.Tiplogia == "Cibo per animali")
+        {
+
+
+            <div class="col mt-3">
+                <img src="https://ilfattoalimentare.it/wp-content/uploads/2016/05/gatto-cibo-per-gatti-Fotolia_94150553_Subscription_Monthly_M.jpg" alt="Immagine Prodotto" class="img-fluid rounded-start" style="width: auto; height: 530px;" />
+            </div>
+
+        }
+        else
+        {
+            <div class="col mt-3">
+                <img src="https://www.piazzapitagora.it/wp-content/uploads/2019/10/CANE2.jpg" alt="Immagine Prodotto" class="img-fluid rounded-start" style="width:auto; height: 530px; object-fit:cover" />
+            </div>
+        }
+    </div>
+<div class="btn-group">
+    @Html.ActionLink("Lista prodotti", "Index", new { id = Model.IdProdotti }, new { @class = "btn btn-primary" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProdotti }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

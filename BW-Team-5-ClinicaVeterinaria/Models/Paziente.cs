@@ -47,6 +47,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public int? IdClienti { get; set; }
 
 
+        public DateTime? DataRicovero { get; set; }
+
         [Display(Name ="Tipologia Paziente")]
         public int IdTipo { get; set; }
 

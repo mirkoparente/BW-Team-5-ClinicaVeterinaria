@@ -83,17 +83,23 @@
             $("#chipCodeButton").click(function () {
                 var inputVal = $("#chipCode").val()
                 console.log(inputVal)
+                if (inputVal !== "")
+                {
                 $.ajax({
                     method: 'GET',
                     url: "Home/searchAnimalbyChipCode",
                     data: { code: inputVal },
                     success: function (data) {
-                        console.log(data.id)
-
+                        console.log(data)
+                        if (data.status == true)
+                        {
                         $(window.location).attr("href", "./Pazienti/DettagliPaziente?id=" + data.id)
+
+                        }
                     }
 
                 })
+                }
             })
 
 

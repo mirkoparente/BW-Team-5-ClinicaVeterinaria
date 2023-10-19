@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202310181052207_createTableOrdiniMoltiAMolti.designer.cs">
       <DependentUpon>202310181052207_createTableOrdiniMoltiAMolti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310190734261_DataRicovero.cs" />
+    <Compile Include="Migrations\202310190734261_DataRicovero.designer.cs">
+      <DependentUpon>202310190734261_DataRicovero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Armadietti.cs" />
     <Compile Include="Models\Cassetti.cs" />
@@ -414,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310181052207_createTableOrdiniMoltiAMolti.resx">
       <DependentUpon>202310181052207_createTableOrdiniMoltiAMolti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310190734261_DataRicovero.resx">
+      <DependentUpon>202310190734261_DataRicovero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -45,12 +45,13 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
+        public ActionResult AddPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo,DataRicovero")] Paziente paziente, HttpPostedFileBase Foto)
         {
 
            
             if (ModelState.IsValid)
             {
+
                
 
                 if (Foto != null)
@@ -63,6 +64,12 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     {
                         paziente.Foto = "";
                     }
+
+                if (paziente.IsHospitalized == true)
+                {
+                    paziente.DataRicovero = DateTime.Now;
+                }
+               
                 db.Paziente.Add(paziente);
                 db.SaveChanges();
                 return RedirectToAction("ListaPazienti");
@@ -94,7 +101,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo")] Paziente paziente, HttpPostedFileBase Foto)
+        public ActionResult EditPaziente([Bind(Include = "IdPaziente,Nome,DataNascita,ColoreMantello,Microchip,Foto,IsHospitalized,IdClienti,IdTipo,DataRicovero")] Paziente paziente, HttpPostedFileBase Foto)
         {
 
                 if (ModelState.IsValid)
@@ -109,7 +116,9 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 {
                     paziente.Foto = "";
                 }
-                    db.Entry(paziente).State = EntityState.Modified;
+
+               
+                db.Entry(paziente).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ListaPazienti");
                 }
@@ -167,7 +176,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 pa.IdPaziente=paz.IdPaziente;
                 pa.Foto=paz.Foto;
                 pa.Nome=paz.Nome;
-
+                pa.DataRicovero = paz.DataRicovero.ToString();
                 pat.Add(pa);
             }
 
@@ -185,7 +194,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 pa.IdPaziente=paz.IdPaziente;
                 pa.Foto=paz.Foto;
                 pa.Nome=paz.Nome;
-
+                pa.DataRicovero = paz.DataRicovero.ToString();
                 pat.Add(pa);
             }
 
