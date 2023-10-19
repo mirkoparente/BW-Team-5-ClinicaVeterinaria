@@ -159,12 +159,13 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             {
                 if (user.Password == user.ConfirmPassword)
                 {
+                    ContextDbModel db2 = new ContextDbModel();
                     if (ModelState.IsValid)
                     {
                         try
                         {
-                            dbContext.Entry(user).State = EntityState.Modified;
-                            dbContext.SaveChanges();
+                            db2.Entry(user).State = EntityState.Modified;
+                            db2.SaveChanges();
                             return RedirectToAction("Index", "Home");
                         }
                         catch (Exception ex)
@@ -172,7 +173,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                             ViewBag.Password="Errore di comuncazione col server";
                             return View(user);
                         }
-                        finally { dbContext.Dispose(); }
+                        finally { dbContext.Dispose(); db2.Dispose(); }
                     }
                     else
                     {
