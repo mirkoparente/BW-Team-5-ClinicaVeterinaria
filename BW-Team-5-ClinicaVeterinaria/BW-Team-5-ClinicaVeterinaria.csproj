@@ -167,6 +167,7 @@
     <Compile Include="Controllers\ClientiController.cs" />
     <Compile Include="Controllers\FornitoriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\PazientiController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\UtentiController.cs" />
@@ -322,6 +323,11 @@
     <Content Include="Views\Pazienti\Ricoveri.cshtml" />
     <Content Include="Views\Prodotti\CercaProdotti.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Ordini\Create.cshtml" />
+    <Content Include="Views\Ordini\Delete.cshtml" />
+    <Content Include="Views\Ordini\Details.cshtml" />
+    <Content Include="Views\Ordini\Edit.cshtml" />
+    <Content Include="Views\Ordini\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

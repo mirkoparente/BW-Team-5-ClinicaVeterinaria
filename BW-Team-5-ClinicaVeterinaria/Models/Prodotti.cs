@@ -36,6 +36,9 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         public int IdCassetti { get; set; }
 
+        [NotMapped]
+        public int QuantitaAcquistata {  get; set; }
+
         public virtual Cassetti Cassetti { get; set; }
 
         public virtual Categoria Categoria { get; set; }
