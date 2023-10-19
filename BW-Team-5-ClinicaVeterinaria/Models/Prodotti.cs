@@ -30,6 +30,9 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Column(TypeName = "money")]
         public decimal PrezzoUnitario { get; set; }
 
+
+        public string FotoProdotto { get; set; }
+
         public int IdFornitori { get; set; }
 
         public int IdCategoria { get; set; }
