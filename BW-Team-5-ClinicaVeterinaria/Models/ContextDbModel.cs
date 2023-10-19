@@ -25,7 +25,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public virtual DbSet<TipoPaziente> TipoPaziente { get; set; }
         public virtual DbSet<Utente> Utente { get; set; }
         public virtual DbSet<Visite> Visite { get; set; }
-        public virtual DbSet<Ordinis> Ordini { get; set; }
+        public virtual DbSet<Ordini> Ordini { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
