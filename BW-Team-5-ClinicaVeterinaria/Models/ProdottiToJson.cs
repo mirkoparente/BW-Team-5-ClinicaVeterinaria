@@ -14,6 +14,8 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         public string Descrizione { get; set; }
 
+        public string FotoProdotto { get; set; }
+
 
     }
 }

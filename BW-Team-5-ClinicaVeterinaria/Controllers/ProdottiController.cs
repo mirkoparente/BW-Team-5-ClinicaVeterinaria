@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,10 +49,21 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // POST Crea Prodotti
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProdotti,Nome,Descrizione,QuantitaDisponibile,PrezzoUnitario,IdFornitori,IdCategoria,IdCassetti")] Prodotti prodotti)
+        public ActionResult Create([Bind(Include = "IdProdotti,Nome,Descrizione,QuantitaDisponibile,PrezzoUnitario,IdFornitori,IdCategoria,IdCassetti,FotoProdotto")] Prodotti prodotti, HttpPostedFileBase FotoProdotto)
         {
             if (ModelState.IsValid)
             {
+                if (FotoProdotto != null)
+                {
+                    string source = Path.Combine(Server.MapPath("~/Content/img"), FotoProdotto.FileName);
+                    FotoProdotto.SaveAs(source);
+                    prodotti.FotoProdotto = FotoProdotto.FileName;
+                }
+                else
+                {
+                    prodotti.FotoProdotto = "";
+                }
+
                 db.Prodotti.Add(prodotti);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,10 +96,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // POST Modifica prodotti
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProdotti,Nome,Descrizione,QuantitaDisponibile,PrezzoUnitario,IdFornitori,IdCategoria,IdCassetti")] Prodotti prodotti)
+        public ActionResult Edit([Bind(Include = "IdProdotti,Nome,Descrizione,QuantitaDisponibile,PrezzoUnitario,IdFornitori,IdCategoria,IdCassetti,FotoProdotto")] Prodotti prodotti, HttpPostedFileBase FotoProdotto)
         {
             if (ModelState.IsValid)
             {
+                if (FotoProdotto != null)
+                {
+                    string source = Path.Combine(Server.MapPath("~/Content/img"), FotoProdotto.FileName);
+                    FotoProdotto.SaveAs(source);
+                    prodotti.FotoProdotto = FotoProdotto.FileName;
+                }
+                else
+                {
+                    prodotti.FotoProdotto = "";
+                }
                 db.Entry(prodotti).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -156,6 +178,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 pt.NomeCassetto = pitem.Cassetti.Nome;
                 pt.NomeArmadietto = pitem.Cassetti.Armadietti.Nome;
                 pt.Descrizione = pitem.Descrizione;
+                pt.FotoProdotto=pitem.FotoProdotto;
                 pro.Add(pt);
             }
 
