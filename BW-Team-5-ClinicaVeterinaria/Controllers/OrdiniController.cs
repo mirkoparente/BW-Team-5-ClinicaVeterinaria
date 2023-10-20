@@ -11,6 +11,7 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 using BW_Team_5_ClinicaVeterinaria.Models.Classi;
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
+    [Authorize(Roles = "Farmacista")]
     public class OrdiniController : Controller
     {
         private ContextDbModel db = new ContextDbModel();

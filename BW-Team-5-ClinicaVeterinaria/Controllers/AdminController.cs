@@ -10,8 +10,10 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class AdminController : Controller
     {
+
         private ContextDbModel db = new ContextDbModel();
 
         // GET: Admin
