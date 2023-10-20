@@ -19,7 +19,7 @@
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-1">
 
                                     <img src="https://www.consumatori.it/wp-content/uploads/2022/08/UNC_cane_malato.jpg"
-                                         class="img-fluid" alt="Sample image">
+                                         class="img-fluid" alt="Sample image" id="imgUpload">
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -68,7 +68,7 @@
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
-                                            @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                                            @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control", @type = "file", @id="Foto" } })
                                             @Html.LabelFor(model => model.Foto, new {@class= "col-form-label col-md-2" })
                                             @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
                                         </div>
@@ -143,6 +143,22 @@
 
              }
          })
+
+         $('#Foto').change(function () {
+             var input = this;
+             if (input.files && input.files[0]) {
+                 var reader = new FileReader();
+
+                 reader.onload = function (e) {
+                     $('#imgUpload').attr('src', e.target.result);
+                 };
+
+                 reader.readAsDataURL(input.files[0]);
+             }
+             else {
+                 imagePreview.attr("src", "https://www.consumatori.it/wp-content/uploads/2022/08/UNC_cane_malato.jpg");
+             }
+         });
 
      })
 

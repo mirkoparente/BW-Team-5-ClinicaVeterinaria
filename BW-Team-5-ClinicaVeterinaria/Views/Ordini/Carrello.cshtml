@@ -77,22 +77,36 @@
                                     <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
                                     <hr class="my-4">
 
-                                    <div class="d-flex justify-content-between mb-4">
-                                        <h5 class="text-uppercase">items 3</h5>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5 class="text-uppercase">Total price</h5>
+                                        <h5>
+                                            @if(ViewBag.Totale != null)
+                                            {
+                                                @ViewBag.Totale.ToString("C2")
+                                            }
+                                            else
+                                            {
+                                                0.ToString("C2");
 
-                                        @*<h5>€ 132.00</h5>*@
-
-                                        <h6 class="mb-0 text-muted">@ViewBag.Carrello.Count</h6>
-
+                                            }
+                                        </h5>
                                     </div>
+
                                     <h5 class="text-uppercase mb-3">Codice Fiscale</h5>
 
                                     <div class="mb-5">
                                         <div class="form-outline">
-                                            <input type="text" id="CF" class="form-control form-control-lg" />
+                                            <input type="text" id="CF" class="form-control form-control-lg" required />
                                             <label class="form-label" for="form3Examplea2">Codice Fiscale</label>
                                         </div>
                                     </div>
+
+                                    
+                                        <div class="mb-5 d-none" id="respContainer">
+                                           
+
+                                        </div>
+                                    
 
 
                                     <h5 class="text-uppercase mb-3">Ricetta</h5>
@@ -106,16 +120,13 @@
 
                                     <hr class="my-4">
 
-                                    <div class="d-flex justify-content-between mb-5">
-                                        <h5 class="text-uppercase">Total price</h5>
-                                        <h5>@ViewBag.Carrello.Count</h5>
-                                    </div>
-                                   
-                                        <button type="button" class="btn btn-primary" id="checkout"
-                                                data-mdb-ripple-color="dark">
-                                            Register
-                                        </button>
-                                    
+
+
+                                    <button type="button" class="btn btn-primary" @(ViewBag.Carrello.Count == 0  ? "disabled" : "" ) id="checkout"
+                                            data-mdb-ripple-color="dark">
+                                        Checkout
+                                    </button>
+
 
                                 </div>
                             </div>
@@ -171,15 +182,34 @@
                 console.log(CF)
                 var nRicetta = $("#numeroRicetta").val()
                 console.log(nRicetta)
-                $.ajax({
-                    method: 'POST',
-                    url: "Ordini/Checkout",
-                    data: { cf: CF, ricetta: nRicetta },
-                    success: function (data) {
-                        console.log(data)
-                        
-                    }
-                })
+                if (CF !== "") {
+                    $.ajax({
+                        method: 'POST',
+                        url: "Ordini/Checkout",
+                        data: { cf: CF, ricetta: nRicetta },
+                        success: function (data) {
+                            console.log(data)
+                            if (data.statusCF === false) {
+                                var newP = `<p class="text-danger">utente non registrato </p>
+                                            <a href="Clienti/Create" class="btn btn-primary"> aggiungi cliente </a>`
+                                $("#respContainer").empty()
+                                $("#respContainer").removeClass("d-none")
+                                $("#respContainer").append(newP)
+                            }
+                            else
+                            {
+                                $(window.location).attr("href", "./Ordini/Carrello")
+
+                            }
+                        }
+                    })
+                } else
+                {
+                   var newP = `<p class="text-danger"> il Codice Fiscale è obbligatorio </p>`
+                    $("#respContainer").empty()
+                    $("#respContainer").removeClass("d-none")
+                    $("#respContainer").append(newP)
+                }
 
 
             })
