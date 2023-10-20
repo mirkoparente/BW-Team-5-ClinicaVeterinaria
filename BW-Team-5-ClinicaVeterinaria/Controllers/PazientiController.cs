@@ -76,10 +76,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     Foto.SaveAs(source);
                     paziente.Foto = Foto.FileName;
                     }
-                    else
-                    {
-                        paziente.Foto = "";
-                    }
+                  
 
                 if (paziente.IsHospitalized == true)
                 {
@@ -128,10 +125,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                         Foto.SaveAs(source);
                         paziente.Foto = Foto.FileName;
                 }
-                else
-                {
-                    paziente.Foto = "";
-                }
+                
 
                
                 db.Entry(paziente).State = EntityState.Modified;

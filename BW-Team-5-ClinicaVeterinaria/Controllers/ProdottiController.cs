@@ -60,10 +60,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     FotoProdotto.SaveAs(source);
                     prodotti.FotoProdotto = FotoProdotto.FileName;
                 }
-                else
-                {
-                    prodotti.FotoProdotto = "";
-                }
+               
 
                 db.Prodotti.Add(prodotti);
                 db.SaveChanges();
@@ -107,10 +104,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     FotoProdotto.SaveAs(source);
                     prodotti.FotoProdotto = FotoProdotto.FileName;
                 }
-                else
-                {
-                    prodotti.FotoProdotto = "";
-                }
+              
                 db.Entry(prodotti).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
