@@ -36,6 +36,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             return View(paziente);
         }
 
+        [AllowAnonymous]
         public ActionResult DettaglioPazienteIndex(int? id)
         {
             if (id == null)
