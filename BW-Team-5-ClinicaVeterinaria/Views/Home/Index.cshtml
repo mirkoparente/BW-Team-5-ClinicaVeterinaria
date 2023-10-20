@@ -98,10 +98,11 @@
                         }
                         else
                         {
-                            var newP = `<p class="text-danger"> nessun paziente attualmente ricoverato con questo chip code</p>`
-                            $('#response').append(newP)
-                            console.log($('#response'))
-
+                            var newP = `<p class="text-danger">Nessun paziente attualmente ricoverato con questo chip code</p>`
+                            if ($('#response').children().length == 0) {
+                                $('#response').append(newP)
+                                console.log($('#response'))
+                            }
                         }
                     }
 
