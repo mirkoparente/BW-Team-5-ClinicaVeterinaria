@@ -106,6 +106,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         
         public ActionResult Checkout(string cf, string ricetta)
         {
+            bool cfIsValid = false;
+            List<Clienti> clienti= db.Clienti.ToList();
+            foreach (var item in clienti)
+            {
+                if(item.CodiceFiscale.ToLower() == cf.ToLower())
+                { 
+                    cfIsValid = true;
+                    break;
+                }
+            }
+
+            if(cfIsValid)
+            {
+    
             Ordini ordine = new Ordini();
             ordine.DataOrdine=DateTime.Now;
             Clienti Cli = db.Clienti.FirstOrDefault(e=>e.CodiceFiscale==cf);
@@ -139,8 +153,25 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
             db.Dispose();
             Session.Clear();
+                var respone = new
+                {
+                    statusCF = true,
 
-            return View();
+                };
+
+                return Json(respone, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                var respone = new
+                {
+                    statusCF = false,
+
+                };
+
+                return Json (respone,JsonRequestBehavior.AllowGet);
+            }
         }
 
 

@@ -109,10 +109,17 @@
 
                                     <div class="mb-5">
                                         <div class="form-outline">
-                                            <input type="text" id="CF" class="form-control form-control-lg" />
+                                            <input type="text" id="CF" class="form-control form-control-lg" required />
                                             <label class="form-label" for="form3Examplea2">Codice Fiscale</label>
                                         </div>
                                     </div>
+
+                                    
+                                        <div class="mb-5 d-none" id="respContainer">
+                                           
+
+                                        </div>
+                                    
 
 
                                     <h5 class="text-uppercase mb-3">Ricetta</h5>
@@ -188,15 +195,31 @@
                 console.log(CF)
                 var nRicetta = $("#numeroRicetta").val()
                 console.log(nRicetta)
-                $.ajax({
-                    method: 'POST',
-                    url: "Ordini/Checkout",
-                    data: { cf: CF, ricetta: nRicetta },
-                    success: function (data) {
-                        console.log(data)
-                        
-                    }
-                })
+                if (CF !== "") {
+                    $.ajax({
+                        method: 'POST',
+                        url: "Ordini/Checkout",
+                        data: { cf: CF, ricetta: nRicetta },
+                        success: function (data) {
+                            console.log(data)
+                            if (data.statusCF === false) {
+                                var newP = `<p class="text-danger">utente non registrato </p>
+                                            <a href="Clienti/Create" class="btn btn-primary"> aggiungi cliente </a>`
+
+                                $("#respContainer").removeClass("d-none")
+                                $("#respContainer").append(newP)
+                            }
+                            else
+                            {
+                                $(window.location).attr("href", "./Ordini/Carrello")
+
+                            }
+                        }
+                    })
+                } else
+                {
+                    //fai stamapre text danger campo cf required
+                }
 
 
             })
