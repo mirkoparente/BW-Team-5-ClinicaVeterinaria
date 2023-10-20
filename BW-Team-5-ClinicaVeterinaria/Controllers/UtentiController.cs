@@ -52,7 +52,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 }
                 else 
                 {
-                    ViewBag.Error = "tutti i campi sono obbligatori";
+                    ViewBag.Error = "Tutti i campi sono obbligatori";
                     return View(u);
                 }
 
@@ -68,7 +68,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()
@@ -119,13 +119,13 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                 }
             }
 
-            ViewBag.password = "le password non coincidono";
+            ViewBag.password = "Le password non coincidono";
             user.Password = null;
             user.ConfirmPassword=null;
             return View(user);
             }
 
-            ViewBag.password = "utente già registrato";
+            ViewBag.password = "Utente già registrato";
             return View(user);
         }
 
@@ -177,20 +177,20 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
                     }
                     else
                     {
-                        ViewBag.password = "compila tutti i campi";
+                        ViewBag.password = "Compila tutti i campi";
                         user.Password = null;
                         user.ConfirmPassword = null;
                         return View(user);
                     }
                 }
                 else {
-                    ViewBag.password = "le password non coincidono";
+                    ViewBag.password = "Le password non coincidono";
                     user.Password = null;
                     user.ConfirmPassword = null;
                     return View(user);
                 }
             }
-            ViewBag.password = "mail già registrata";
+            ViewBag.password = "Mail già registrata";
             user.Password = null;
             user.ConfirmPassword = null;
             return View(user);
