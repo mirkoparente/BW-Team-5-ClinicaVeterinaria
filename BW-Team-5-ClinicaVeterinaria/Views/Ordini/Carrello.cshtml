@@ -5,7 +5,7 @@
 }
 
 
-<section class="h-100 h-custom" style="background-color: #51dacf;">
+<section class="h-100 h-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12">
@@ -54,7 +54,7 @@
                                                 <h6 class="mb-0">@tot.ToString("C2")</h6>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                                <button value=@item.IdProdotti class="btn btn-outline-danger deleteBtn"><i class="fas fa-times"></i></button>
                                             </div>
                                         </div>
                                         }
@@ -214,7 +214,23 @@
 
             })
 
+            $('.deleteBtn').click(function () {
+                var idPrd = parseInt(this.value)
+                console.log(idPrd)
+                $.ajax({
+                    method: 'GET',
+                    url: "Ordini/deletePrdCarello",
+                    data: { id: idPrd },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.length >= 0) {
+                            $(window.location).attr("href", "./Ordini/Carrello")
+                        }
+                    }
+                })
 
+
+            })
         })
 
 

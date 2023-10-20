@@ -11,6 +11,7 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 using BW_Team_5_ClinicaVeterinaria.Models.Classi;
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
+    [Authorize(Roles = "Farmacista")]
     public class OrdiniController : Controller
     {
         private ContextDbModel db = new ContextDbModel();
@@ -254,6 +255,28 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
   
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult deletePrdCarello(int id) 
+        {
+
+            List<ProdottoCarrello> carrello = Session["Carrello"] as List<ProdottoCarrello>;
+
+            ProdottoCarrello prdToRemove= carrello.FirstOrDefault(e=>e.IdProdotti==id);
+            carrello.Remove(prdToRemove);
+            decimal Totale = 0;
+            foreach (var i in carrello)
+            {
+                Totale += (i.PrezzoUnitario * i.QuantitaAcquistata);
+            
+            }
+            Session["Carrello"] = carrello;
+            ViewBag.Totale = Totale;
+
+            return Json(carrello, JsonRequestBehavior.AllowGet);
+
+        }
+
+
     }
 }
 

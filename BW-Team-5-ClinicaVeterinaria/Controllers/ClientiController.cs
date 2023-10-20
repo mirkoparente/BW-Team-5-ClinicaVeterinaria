@@ -10,6 +10,7 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
+    [Authorize(Roles = "Farmacista, Veterinario")]
     public class ClientiController : Controller
     {
         private ContextDbModel db = new ContextDbModel();

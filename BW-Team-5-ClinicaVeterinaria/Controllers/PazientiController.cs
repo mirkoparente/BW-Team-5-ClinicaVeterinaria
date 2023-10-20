@@ -11,6 +11,7 @@ using BW_Team_5_ClinicaVeterinaria.Models;
 
 namespace BW_Team_5_ClinicaVeterinaria.Controllers
 {
+    [Authorize(Roles = "Veterinario")]
     public class PazientiController : Controller
     {
         private ContextDbModel db = new ContextDbModel();
