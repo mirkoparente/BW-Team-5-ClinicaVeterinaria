@@ -81,13 +81,31 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             foreach (var e in carrello)
             {
                 Totale += (e.QuantitaAcquistata * e.PrezzoUnitario);
+              
             }
             ordine.TotaleOrdine = Totale;
 
             db.Ordini.Add(ordine);
             db.SaveChanges();
 
-            return View(carrello);
+            foreach (var i in carrello)
+            {
+                ProdottiAcquistati prd = new ProdottiAcquistati();
+                prd.IdProdotti = i.IdProdotti;
+                prd.IdOrdini = ordine.IdOrdini;
+                prd.Quantita = i.QuantitaAcquistata;
+                if(ricetta != null) 
+                { 
+                    prd.NumeroRicetta = ricetta;
+                }
+                prd.Totale = (i.QuantitaAcquistata*i.PrezzoUnitario);
+                db.ProdottiAcquistati.Add(prd);
+                db.SaveChanges();
+            }
+            db.Dispose();
+            Session.Clear();
+
+            return View();
         }
 
 

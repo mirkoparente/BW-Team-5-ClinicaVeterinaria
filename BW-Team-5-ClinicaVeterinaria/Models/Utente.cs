@@ -29,6 +29,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         public string Password { get; set; }
 
         [NotMapped]
+        [Display(Name ="Conferma password")]
         public string ConfirmPassword { get; set; }
 
         public int IdRuoli { get; set; }

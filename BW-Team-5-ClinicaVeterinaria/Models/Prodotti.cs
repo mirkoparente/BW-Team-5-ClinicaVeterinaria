@@ -25,12 +25,14 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
         [Required]
         public string Descrizione { get; set; }
 
+        [Display(Name = "Quantità disponibile")]
         public int QuantitaDisponibile { get; set; }
 
         [Column(TypeName = "money")]
+        [Display(Name ="Prezzo unitario")]
         public decimal PrezzoUnitario { get; set; }
 
-
+        [Display(Name ="Foto prodotto")]
         public string FotoProdotto { get; set; }
 
         public int IdFornitori { get; set; }
