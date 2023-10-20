@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BW_Team_5_ClinicaVeterinaria.Models.Ordini>
+
+@{
+    ViewBag.Title = "ListaOrdini";
+}
+
+<h2>ListaOrdini</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="card-title">Statistiche giornaliere</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="data">Seleziona una data:</label>
+                            <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <p id="numero-medicinali">Ordini</p>
+                        <p id="totale-incassato">Totale incassato</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clienti.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataOrdine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotaleOrdine)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clienti.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataOrdine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotaleOrdine)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdOrdini }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdOrdini }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdOrdini })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            $('#visualizza-statistiche').click(function () {
+                var newDate = $('#data').val()
+                console.log(newDate)
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Action("Lista","Ordini")',
+                    data: { data: newDate },
+                    success: function (response) {
+                        console.log(response);
+                        $('numero-medicinali').text('Numero totale medicinali:' + response);
+                    },
+                    error: function(error) {
+                    console.log(error);
+                }
+                })
+            })
+        })
+    </script>
+}

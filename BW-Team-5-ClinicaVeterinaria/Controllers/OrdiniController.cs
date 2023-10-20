@@ -198,7 +198,21 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
 
         }
 
+        public ActionResult ListaOrdini()
+        {
+            return View(db.Ordini.ToList());
+        }
 
+        [HttpGet]
+        public JsonResult Lista(DateTime data)
+        {
+            DateTime D = data.Date;
+            List<Ordini> medicinaliInData = db.Ordini
+                .Where(m => DbFunctions.TruncateTime(m.DataOrdine) == D)
+                .ToList();
+
+            return Json(medicinaliInData, JsonRequestBehavior.AllowGet);
+        }
     }
 }
 
