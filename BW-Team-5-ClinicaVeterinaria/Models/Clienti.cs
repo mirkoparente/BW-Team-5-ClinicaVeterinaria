@@ -33,6 +33,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         [Required]
         [StringLength(16)]
+        [Display(Name = "Codice fiscale")]
         public string CodiceFiscale {  get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

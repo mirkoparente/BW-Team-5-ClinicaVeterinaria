@@ -17,6 +17,19 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            List<Ruoli> ruoli = db.Ruoli.ToList();
+            List<SelectListItem> dropRuoli = ruoli.Select(e => new SelectListItem
+            {
+                Value = e.IdRuoli.ToString(),
+                Text = e.Ruolo.ToString(),
+
+            }).ToList();
+
+
+            ViewBag.Ruoli = dropRuoli;
+
+
+
             var utente = db.Utente.Include(u => u.Ruoli);
             return View(utente.ToList());
         }
@@ -128,5 +141,26 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult editRuolo(int idRuolo, int idUtente) 
+        {
+            Utente u = db.Utente.Find(idUtente);
+            if(u.IdRuoli != idRuolo) 
+            { 
+            u.IdRuoli = idRuolo;
+            db.Entry(u).State = EntityState.Modified;
+            db.SaveChanges();
+                       
+            }
+
+            var response = new
+            {
+                status = true,
+            };
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
