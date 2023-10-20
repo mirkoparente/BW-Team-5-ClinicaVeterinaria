@@ -4,55 +4,52 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Clienti</h2>
-
-<p>
-    @Html.ActionLink("Registra cliente", "Create")
-</p>
+<h2 class="text-center my-3">Lista clienti</h2>
 <div class="table-responsive">
+    <table class="container table table-active">
+        <tr>
+            <th>    
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cognome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceFiscale)
+            </th>
+            <th>
+                <a href="Clienti/Create"><i class="fa-solid fa-plus" style="color: #288d8f;"></i></a>
+            </th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cognome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th> 
-        <th>
-            @Html.DisplayNameFor(model => model.CodiceFiscale)
-        </th>
-        <th>
-        </th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cognome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodiceFiscale)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.IdClienti }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdClienti }) |*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cognome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodiceFiscale)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.IdClienti }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IdClienti }) |*@
+                    <a href="Clienti/Edit?id=@item.IdClienti"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+                    <a href="Clienti/Details?id=@item.IdClienti"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
 
-            <a href="Clienti/Edit?id=@item.IdClienti"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
-            <a href="Clienti/Details?id=@item.IdClienti"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
+                </td>
+            </tr>
+        }
 
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
 </div>
