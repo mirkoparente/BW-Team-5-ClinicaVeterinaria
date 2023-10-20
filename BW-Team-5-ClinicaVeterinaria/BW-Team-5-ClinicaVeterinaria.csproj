@@ -254,6 +254,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\carrello.css" />
     <Content Include="Content\Css\login.css" />
     <Content Include="Content\Css\_layoutpage.css" />
     <Content Include="Content\Img\cane marrone.jpg" />

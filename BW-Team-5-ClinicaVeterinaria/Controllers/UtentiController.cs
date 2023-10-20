@@ -68,6 +68,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 
