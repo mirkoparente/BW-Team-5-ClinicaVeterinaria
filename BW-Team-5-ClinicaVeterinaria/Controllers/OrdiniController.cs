@@ -207,11 +207,52 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
         public JsonResult Lista(DateTime data)
         {
             DateTime D = data.Date;
+
             List<Ordini> medicinaliInData = db.Ordini
                 .Where(m => DbFunctions.TruncateTime(m.DataOrdine) == D)
                 .ToList();
 
-            return Json(medicinaliInData, JsonRequestBehavior.AllowGet);
+            List<OrdiniToJson> or = new List<OrdiniToJson>();
+
+            foreach(var i in medicinaliInData)
+            {
+                OrdiniToJson o=new OrdiniToJson();
+                o.IdOrdini = i.IdOrdini;
+                o.DataOrdine = i.DataOrdine.ToString();
+                o.TotaleOrdine= i.TotaleOrdine;
+                foreach(var j in i.ProdottiAcquistati)
+                {
+                    o.Quantita= j.Quantita;
+                    o.Nome = j.Prodotti.Nome;
+                }
+                or.Add(o);
+            }
+
+            return Json(or, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult MedByCf (string cf) 
+        { 
+            List<Ordini> ordini = db.Ordini.Where(e=> e.Clienti.CodiceFiscale.ToLower() == cf.ToLower()).ToList();
+
+            var result = ordini.Select(e => new
+            {
+                Nome = e.Clienti.Nome,
+                Cognome = e.Clienti.Cognome,
+                DataOrdine = e.DataOrdine,
+                Totale = e.TotaleOrdine,
+                Articoli =
+                e.ProdottiAcquistati.Select(i => new
+                {
+                    Nome = i.Prodotti.Nome,
+                    quantita = i.Quantita,
+                    prezzo = i.Totale
+
+                }).ToArray()
+
+            }).ToArray();
+  
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

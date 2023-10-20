@@ -13,7 +13,7 @@
                     <h3 class="card-title">Statistiche giornaliere</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <div>
                         <div class="form-group">
                             <label for="data">Seleziona una data:</label>
                             <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
@@ -22,15 +22,48 @@
                         <div class="form-group text-center">
                             <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
                         </div>
-                    </form>
+                    </div>
+
+                    <div>
+                        <div class="form-group">
+                            <label for="CF">Seleziona CF Cliente :</label>
+                            <input type="text" class="form-control" id="CF" name="CF" />
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="button" id="medCf" class="btn btn-dark">Visualizza Statistiche</button>
+                        </div>
+                    </div>
+
+
 
                     <div class="mt-4">
-                        <p id="numero-medicinali">Ordini</p>
-                        <p id="totale-incassato">Totale incassato</p>
+                        <ul id="numero-medicinali">
+                            <li>
+                            Elenco Medicinali
+                            </li>
+
+                        </ul>
+                        <ul id="totale-incassato">
+                            <li>
+                            Totale incassato nella giornata
+                            </li>
+                              
+
+                        </ul>
+
+                        <ul id="cfResult" class="list-group list-group-light">
+
+
+                        </ul>
+
+
+
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -81,19 +114,70 @@
             $('#visualizza-statistiche').click(function () {
                 var newDate = $('#data').val()
                 console.log(newDate)
+                $('#numero-medicinali').empty()
+                $('#totale-incassato').empty()
                 $.ajax({
                     method: 'GET',
                     url: '@Url.Action("Lista","Ordini")',
                     data: { data: newDate },
                     success: function (response) {
                         console.log(response);
-                        $('numero-medicinali').text('Numero totale medicinali:' + response);
+                        var totale=0
+                        $.each(response, function (i, v) {
+                            totale += v.TotaleOrdine
+                            var c = `<li>${v.Nome} - Quantità:${v.Quantita}</li> ` 
+                            
+                            //var t = `${totale.toLocaleString("it-IT", {
+                            //    style: 'currency',
+                            //    currency: 'EUR',
+                            //})}`
+                            $('#numero-medicinali').append(c)
+
+                        })
+                        $('#totale-incassato').append(totale.toLocaleString("it-IT", {
+                                style: 'currency',
+                               currency: 'EUR',
+                            }));
                     },
                     error: function(error) {
                     console.log(error);
                 }
                 })
             })
+
+            $('#medCf').click(function () {
+                var CF = $('#CF').val()
+                console.log(CF)
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Action("MedByCf","Ordini")',
+                    data: { cf: CF },
+                    success: function (response) {
+                        console.log(response);
+                        $.each(response, function(i,v){
+                        var newLi = $(`<li class="list-group-item">Nome: ${v.Nome} - totale ordine ${v.Totale}€</li>`) 
+                        
+
+
+
+                        var newOl = $(`<ol class="list-group list-group-light list-group-numbered ms-3"></ol>`)
+                            $.each(v.Articoli, function (i,e){
+                                var li =`<li class="list-group-item">${e.Nome} - ${e.quantita} pz. - ${e.prezzo} € </li>`
+                                console.log(li)
+                                newOl.append(li)
+
+                            })
+                        newLi.append(newOl)
+                        $('#cfResult').append(newLi)
+
+                        })
+
+                        
+                    }
+                })
+
+            })
+
         })
     </script>
 }
