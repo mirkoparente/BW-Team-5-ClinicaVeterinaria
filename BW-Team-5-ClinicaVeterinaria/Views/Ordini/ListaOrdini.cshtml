@@ -38,9 +38,12 @@
 
 
                     <div class="mt-4">
-                        <p id="numero-medicinali">Ordini</p>
-                        <p id="totale-incassato">Totale incassato</p>
-                    </div>
+                        <ul id="numero-medicinali">Elenco Medicinali
+                        
+                       </ul>
+                        <ul id="totale-incassato">Totale incassato nella giornata
+                        
+                        </ul>
                 </div>
             </div>
         </div>
@@ -95,13 +98,30 @@
             $('#visualizza-statistiche').click(function () {
                 var newDate = $('#data').val()
                 console.log(newDate)
+                $('#numero-medicinali').empty()
+                $('#totale-incassato').empty()
                 $.ajax({
                     method: 'GET',
                     url: '@Url.Action("Lista","Ordini")',
                     data: { data: newDate },
                     success: function (response) {
                         console.log(response);
-                        $('numero-medicinali').text('Numero totale medicinali:' + response);
+                        var totale=0
+                        $.each(response, function (i, v) {
+                            totale += v.TotaleOrdine
+                            var c = `<li>${v.Nome} - Quantità:${v.Quantita}</li> ` 
+                            
+                            //var t = `${totale.toLocaleString("it-IT", {
+                            //    style: 'currency',
+                            //    currency: 'EUR',
+                            //})}`
+                            $('#numero-medicinali').append(c)
+
+                        })
+                        $('#totale-incassato').append(totale.toLocaleString("it-IT", {
+                                style: 'currency',
+                               currency: 'EUR',
+                            }));
                     },
                     error: function(error) {
                     console.log(error);
