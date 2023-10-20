@@ -21,7 +21,7 @@
     <!-- personal style -->
     <link href="~/Content/Css/_layoutpage.css" rel="stylesheet" />
     <link href="~/Content/Css/login.css" rel="stylesheet" />
-
+    <link href="~/Content/Css/carrello.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -79,7 +79,7 @@
                                 @Html.ActionLink("Gestisci Ricoveri", "ListaPazienti", "Pazienti", new { area = "" }, new { @class = "nav-link" })
                             </li>
                             <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Pazienti" && ViewContext.RouteData.Values["action"].ToString() == "ListaPazienti" ? "active" : "")">
-                                @Html.ActionLink("Gestisci Paziente", "Index", "TipoPaziente", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Gestisci tipi pazienti", "Index", "TipoPaziente", new { area = "" }, new { @class = "nav-link" })
                             </li>
 
                             <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Clienti" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
@@ -97,6 +97,9 @@
                         }
                         else if (User.IsInRole("Farmacista"))
                         {
+                            <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Clienti" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                @Html.ActionLink("Gestisci Clienti", "Index", "Clienti", new { area = "" }, new { @class = "nav-link" })
+                            </li>
                             <li class="nav-item @(ViewContext.RouteData.Values["controller"].ToString() == "Fornitori" ? "active" : "")">
                                 @Html.ActionLink("Gestisci Fornitori", "Index", "Fornitori", new { area = "" }, new { @class = "nav-link" })
                             </li>
