@@ -69,14 +69,16 @@
                             
                             var c = `<div class="col" >
                             <a href="./Pazienti/DettagliPaziente?id=${v.IdPaziente}" >
-                            <div class="card" style="width: 18rem;">
-          <img src="./Content/img/${v.Foto}" class="card-img-top" alt="...">
+                            <div class="card h-100 d-flex flex-column justify-content-between" style="width:20rem">
+          <img src="./Content/img/${v.Foto}" class="card-img-top h-50 image-fluid" alt="..." >
+         <div class="d-flex flex-column justify-content-between">
           <div class="card-body">
             <h5 class="card-title">Nome: ${v.Nome}</h5>
             <p class="card-text"> in Ricovero dal:</p>
             <p class="card-text">${v.DataRicovero}</p>
 
           </div>
+         </div>
 </div></a></div>`
     $("#ca").append(c)
         
