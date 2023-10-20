@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center my-3">Elenco utenti registrati</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="table-responsive">
+
 <table class="table">
     <tr>
         <th>
@@ -29,29 +28,92 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ruoli.Ruolo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cognome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdUtente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdUtente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdUtente })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ruoli.Ruolo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary changeRuolo" value=@item.IdUtente data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                    Cambia Ruolo
+                </button>
+
+            </td>
+        </tr>
+    }
 
 </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cambia Ruolo </h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.DropDownList("Ruolo", new SelectList(ViewBag.Ruoli, "Value", "Text"), "Seleziona un ruolo", new { @class = "form-control" })
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $(".changeRuolo").click(function () {
+                var IdUtente = parseInt(this.value)
+                console.log(IdUtente)
+                $("#save").click(function () {
+                    var IdRuolo = $("#Ruolo").val()
+                    console.log(IdRuolo)
+                    
+                    $.ajax({
+                        method: 'GET',
+                        url: "Admin/editRuolo",
+                        data: { idRuolo: IdRuolo, idUtente: IdUtente },
+                        success: function (data) {
+                            console.log(data)
+                            if (data.status==true) {
+                                $(window.location).attr("href", "./Admin/Index")
+                            }
+                        }
+                    })
+
+                })
+
+            })
+
+
+
+        })
+
+
+
+    </script>
+}
