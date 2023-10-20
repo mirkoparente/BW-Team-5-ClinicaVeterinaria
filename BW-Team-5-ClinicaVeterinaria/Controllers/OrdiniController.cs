@@ -213,6 +213,30 @@ namespace BW_Team_5_ClinicaVeterinaria.Controllers
 
             return Json(medicinaliInData, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult MedByCf (string cf) 
+        { 
+            List<Ordini> ordini = db.Ordini.Where(e=> e.Clienti.CodiceFiscale.ToLower() == cf.ToLower()).ToList();
+
+            var result = ordini.Select(e => new
+            {
+                Nome = e.Clienti.Nome,
+                Cognome = e.Clienti.Cognome,
+                DataOrdine = e.DataOrdine,
+                Totale = e.TotaleOrdine,
+                Articoli =
+                e.ProdottiAcquistati.Select(i => new
+                {
+                    Nome = i.Prodotti.Nome,
+                    quantita = i.Quantita,
+                    prezzo = i.Totale
+
+                }).ToArray()
+
+            }).ToArray();
+  
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
 

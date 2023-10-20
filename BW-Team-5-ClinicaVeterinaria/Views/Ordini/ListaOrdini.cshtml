@@ -13,7 +13,7 @@
                     <h3 class="card-title">Statistiche giornaliere</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <div>
                         <div class="form-group">
                             <label for="data">Seleziona una data:</label>
                             <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
@@ -22,7 +22,20 @@
                         <div class="form-group text-center">
                             <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
                         </div>
-                    </form>
+                    </div>
+
+                    <div>
+                        <div class="form-group">
+                            <label for="CF">Seleziona CF Cliente :</label>
+                            <input type="text" class="form-control" id="CF" name="CF"/>
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="button" id="medCf" class="btn btn-dark">Visualizza Statistiche</button>
+                        </div>
+                    </div>
+
+
 
                     <div class="mt-4">
                         <p id="numero-medicinali">Ordini</p>
@@ -31,6 +44,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -94,6 +108,22 @@
                 }
                 })
             })
+
+            $('#medCf').click(function () {
+                var CF = $('#CF').val()
+                console.log(CF)
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Action("MedByCf","Ordini")',
+                    data: { cf: CF },
+                    success: function (response) {
+                        console.log(response);
+                        
+                    }
+                })
+
+            })
+
         })
     </script>
 }
