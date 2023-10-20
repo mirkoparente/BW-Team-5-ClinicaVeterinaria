@@ -95,7 +95,7 @@
                                         <h5>
                                             @if(ViewBag.Totale != null)
                                             {
-                                                @ViewBag.Totale
+                                                @ViewBag.Totale.ToString("C2")
                                             }
                                             else
                                             {
@@ -135,7 +135,7 @@
 
 
 
-                                    <button type="button" class="btn btn-primary" id="checkout"
+                                    <button type="button" class="btn btn-primary" @(ViewBag.Carrello.Count == 0  ? "disabled" : "" ) id="checkout"
                                             data-mdb-ripple-color="dark">
                                         Checkout
                                     </button>
@@ -205,7 +205,7 @@
                             if (data.statusCF === false) {
                                 var newP = `<p class="text-danger">utente non registrato </p>
                                             <a href="Clienti/Create" class="btn btn-primary"> aggiungi cliente </a>`
-
+                                $("#respContainer").empty()
                                 $("#respContainer").removeClass("d-none")
                                 $("#respContainer").append(newP)
                             }
@@ -218,7 +218,10 @@
                     })
                 } else
                 {
-                    //fai stamapre text danger campo cf required
+                   var newP = `<p class="text-danger"> il Codice Fiscale è obbligatorio </p>`
+                    $("#respContainer").empty()
+                    $("#respContainer").removeClass("d-none")
+                    $("#respContainer").append(newP)
                 }
 
 
