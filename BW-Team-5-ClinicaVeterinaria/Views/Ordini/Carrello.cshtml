@@ -4,17 +4,6 @@
     ViewBag.Title = "Carrello";
 }
 
-<h2>Carrello</h2>
-
-
-    
-
-    
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 <section class="h-100 h-custom" style="background-color: #51dacf;">
     <div class="container py-5 h-100">
@@ -28,8 +17,6 @@
                                 <div class="p-5">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <h1 class="fw-bold mb-0 text-black">Riepilogo Ordine</h1>
-
-                                        @*<h6 class="mb-0 text-muted">@ViewBag.Carrello.Count</h6>*@
 
                                     </div>
                                         <hr class="my-4">
@@ -76,8 +63,8 @@
 
                                         <div class="pt-5">
                                             <h6 class="mb-0">
-                                                <a href="#!" class="text-body">
-                                                    <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
+                                                <a href="Prodotti/CercaProdotti" class="text-body">
+                                                    <i class="fas fa-long-arrow-alt-left me-2"></i>Continua i tuoi acquisti
                                                 </a>
                                             </h6>
                                         </div>

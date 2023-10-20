@@ -20,6 +20,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name ="Ragione sociale")]
         public string RagioneSociale { get; set; }
 
         [Required]
@@ -31,6 +32,7 @@ namespace BW_Team_5_ClinicaVeterinaria.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name ="Città")]
         public string Citta { get; set; }
 
         [Required]

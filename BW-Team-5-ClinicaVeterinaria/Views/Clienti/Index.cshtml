@@ -44,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.CodiceFiscale)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdClienti }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdClienti }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdClienti })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.IdClienti }) |
+        @Html.ActionLink("Details", "Details", new { id = item.IdClienti }) |*@
+
+            <a href="Clienti/Edit?id=@item.IdClienti"><i class="fa-regular fa-pen-to-square" style="color: #288d8f;"></i></a>
+            <a href="Clienti/Details?id=@item.IdClienti"><i class="fa-solid fa-circle-info" style="color: #288d8f;"></i></a>
+
         </td>
     </tr>
 }
